@@ -6,9 +6,9 @@ public class Center extends Entity<Integer>{
     private String institutionDetails;
     private LogInfo logInfo;
     private String centerName;
-    private Address address;
+    private String address;
 
-    public Center(String institutionDetails, LogInfo logInfo, String centerName, Address address) {
+    public Center(String institutionDetails, LogInfo logInfo, String centerName, String address) {
         this.institutionDetails = institutionDetails;
         this.logInfo = logInfo;
         this.centerName = centerName;
@@ -39,11 +39,11 @@ public class Center extends Entity<Integer>{
         this.centerName = centerName;
     }
 
-    public Address getAddress() {
+    public String getAddress() {
         return address;
     }
 
-    public void setAddress(Address address) {
+    public void setAddress(String address) {
         this.address = address;
     }
 
