@@ -1,5 +1,8 @@
 package bpos.model;
 
+import bpos.model.Enums.BloodType;
+import bpos.model.Enums.Rh;
+
 import java.util.List;
 import java.util.Objects;
 
