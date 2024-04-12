@@ -6,11 +6,14 @@ public class BloodTest extends Entity<Integer> {
 
     private String name;
     private String path;
+    private MedicalInfo medicalInfo;
 
 
-    public BloodTest(String name, String path) {
+
+    public BloodTest(String name, String path, MedicalInfo medicalInfo) {
         this.name = name;
         this.path = path;
+        this.medicalInfo = medicalInfo;
     }
 
     public String getName() {
@@ -41,6 +44,14 @@ public class BloodTest extends Entity<Integer> {
     @Override
     public int hashCode() {
         return Objects.hash(name, path);
+    }
+
+    public MedicalInfo getMedicalInfo() {
+        return medicalInfo;
+    }
+
+    public void setMedicalInfo(MedicalInfo medicalInfo) {
+        this.medicalInfo = medicalInfo;
     }
 }
 
