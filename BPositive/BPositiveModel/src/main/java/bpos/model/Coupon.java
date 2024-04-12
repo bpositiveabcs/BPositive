@@ -11,15 +11,16 @@ public class Coupon extends Entity<Integer>{
     private String offer;
     private LocalDateTime unavailableToClaimFrom;
     private Integer validityPeriod;
+    private String series;
 
-
-    public Coupon(Integer necessaryPoints, String name, String provider, String offer, LocalDateTime unavailableToClaimFrom, Integer validityPeriod) {
+    public Coupon(Integer necessaryPoints, String name, String provider, String offer, LocalDateTime unavailableToClaimFrom, Integer validityPeriod, String series) {
         this.necessaryPoints = necessaryPoints;
         this.name = name;
         this.provider = provider;
         this.offer = offer;
         this.unavailableToClaimFrom = unavailableToClaimFrom;
         this.validityPeriod = validityPeriod;
+        this.series = series;
     }
 
 
@@ -89,5 +90,13 @@ public class Coupon extends Entity<Integer>{
     @Override
     public int hashCode() {
         return Objects.hash(necessaryPoints, name, provider, offer, unavailableToClaimFrom, validityPeriod);
+    }
+
+    public String getSeries() {
+        return series;
+    }
+
+    public void setSeries(String series) {
+        this.series = series;
     }
 }

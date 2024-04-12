@@ -1,4 +1,8 @@
 package bpos.repository.Interfaces;
 
-public class LogInfoRepository {
+import bpos.model.LogInfo;
+
+public interface LogInfoRepository extends IRepository<Integer, LogInfo>{
+    LogInfo findByUsername(String username);
+    LogInfo findByEmail(String email);
 }

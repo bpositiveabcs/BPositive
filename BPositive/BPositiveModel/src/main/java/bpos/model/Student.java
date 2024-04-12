@@ -4,16 +4,26 @@ import java.util.Objects;
 
 public class Student extends Person{
     private Integer year;
-    private String bloodType;
+    private String group;
     private String faculty;
+    private String department;
     private Institution university;
 
-    public Student(LogInfo personLogInfo, Integer points, PersonalData personalDate, MedicalInfo medicalInfo, Institution institution, Integer year, String bloodType, String faculty, Institution university) {
+    public Student(LogInfo personLogInfo, Integer points, PersonalData personalDate, MedicalInfo medicalInfo, Institution institution, Integer year, String group, String faculty, String department, Institution university) {
         super(personLogInfo, points, personalDate, medicalInfo, institution);
         this.year = year;
-        this.bloodType = bloodType;
+        this.group = group;
         this.faculty = faculty;
+        this.department = department;
         this.university = university;
+    }
+
+    public Student(String department, String faculty, int an, String grupa, Person person) {
+        super(person.getPersonLogInfo(),person.getPoints(),person.getPersonalDate(),person.getMedicalInfo(),person.getInstitution());
+        this.department=department;
+        this.faculty=faculty;
+        this.year=an;
+        this.group=grupa;
     }
 
     public Integer getYear() {
@@ -24,12 +34,11 @@ public class Student extends Person{
         this.year = year;
     }
 
-    public String getBloodType() {
-        return bloodType;
+    public String getGroup() {
+        return group;
     }
-
-    public void setBloodType(String bloodType) {
-        this.bloodType = bloodType;
+    public String setGroup(String group) {
+        return this.group = group;
     }
 
     public String getFaculty() {
@@ -53,11 +62,19 @@ public class Student extends Person{
         if (this == o) return true;
         if (!(o instanceof Student student)) return false;
         if (!super.equals(o)) return false;
-        return Objects.equals(getYear(), student.getYear()) && Objects.equals(getBloodType(), student.getBloodType()) && Objects.equals(getFaculty(), student.getFaculty()) && Objects.equals(getUniversity(), student.getUniversity());
+        return Objects.equals(getYear(), student.getYear()) && Objects.equals(getGroup(), student.getGroup()) && Objects.equals(getFaculty(), student.getFaculty()) && Objects.equals(getUniversity(), student.getUniversity());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), getYear(), getBloodType(), getFaculty(), getUniversity());
+        return Objects.hash(super.hashCode(), getYear(),getGroup(), getFaculty(), getUniversity());
+    }
+
+    public String getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(String department) {
+        this.department = department;
     }
 }

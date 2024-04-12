@@ -1,4 +1,11 @@
 package bpos.repository.Interfaces;
 
-public class RetrievedCouponsRepository {
+import bpos.model.RetrievedCoupons;
+
+public interface RetrievedCouponsRepository extends IRepository<Integer, RetrievedCoupons>
+{
+    Iterable<RetrievedCoupons> findByPersonId(int personId);
+    Iterable<RetrievedCoupons> findByCouponId(int couponId);
+    Iterable<RetrievedCoupons> findByDate(String date);
+
 }

@@ -1,4 +1,7 @@
 package bpos.repository.Interfaces;
 
-public class BloodTestRepository {
+import bpos.model.BloodTest;
+
+public interface BloodTestRepository extends IRepository<Integer, BloodTest>{
+
 }

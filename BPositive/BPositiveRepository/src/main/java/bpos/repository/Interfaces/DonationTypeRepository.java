@@ -1,4 +1,6 @@
 package bpos.repository.Interfaces;
 
-public class DonationTypeRepository {
+import bpos.model.DonationType;
+
+public interface DonationTypeRepository  extends IRepository<Integer, DonationType>{
 }
