@@ -121,7 +121,7 @@ public class DBBloodTestRepository implements BloodTestRepository {
             preparedStatement.setInt(1,entity.getId());
             preparedStatement.setString(2,entity.getName());
             preparedStatement.setString(3,entity.getPath());
-            preparedStatement.setInt(4,entity.get);
+            preparedStatement.setInt(4,entity.getMedicalInfo().getId()  );
             preparedStatement.executeUpdate();
         }
         catch (SQLException e)
@@ -129,15 +129,59 @@ public class DBBloodTestRepository implements BloodTestRepository {
             logger.error(e);
             System.out.println("Error finding all elements DB"+ e);
         }
+        return Optional.of(entity);
     }
 
     @Override
     public Optional<BloodTest> delete(BloodTest entity) {
-        return Optional.empty();
+
+        if(entity==null)
+        {
+            logger.error("Cannot delete blood test if entity is null!");
+            throw new IllegalArgumentException("Cannot delete blood test if entity is null!");
+        }
+        String sql="DELETE FROM Analiza WHERE id=?";
+        Connection con=dbUtils.getConnection();
+        try (PreparedStatement preparedStatement=con.prepareStatement(sql))
+        {
+            preparedStatement.setInt(1,entity.getId());
+            preparedStatement.executeUpdate();
+        }
+        catch (SQLException e)
+        {
+            logger.error(e);
+            System.out.println("Error finding all elements DB"+ e);
+        }
+        return Optional.of(entity);
     }
 
     @Override
     public Optional<BloodTest> update(BloodTest entity) {
-        return Optional.empty();
+
+        if(entity==null)
+        {
+            logger.error("Cannot update blood test if entity is null!");
+            throw new IllegalArgumentException("Cannot update blood test if entity is null!");
+        }
+        if(bloodTestValidator!=null)
+        {
+            bloodTestValidator.validate(entity);
+        }
+        String sql="UPDATE Analiza SET nume=?, cale=?, id_informatiimedicale=? WHERE id=?";
+        Connection con=dbUtils.getConnection();
+        try (PreparedStatement preparedStatement=con.prepareStatement(sql))
+        {
+            preparedStatement.setString(1,entity.getName());
+            preparedStatement.setString(2,entity.getPath());
+            preparedStatement.setInt(3,entity.getMedicalInfo().getId());
+            preparedStatement.setInt(4,entity.getId());
+            preparedStatement.executeUpdate();
+        }
+        catch (SQLException e)
+        {
+            logger.error(e);
+            System.out.println("Error finding all elements DB"+ e);
+        }
+        return Optional.of(entity);
     }
 }
