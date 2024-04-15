@@ -2,10 +2,10 @@
 <project version="4">
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$/BPositive" />
+    <file type="web" url="file://$PROJECT_DIR$/BPositive/BPositiveClient" />
     <file type="web" url="file://$PROJECT_DIR$/BPositive/BPositiveNetworking" />
     <file type="web" url="file://$PROJECT_DIR$/BPositive/BPositiveServer" />
     <file type="web" url="file://$PROJECT_DIR$/BPositive/BPositiveServices" />
-    <file type="web" url="file://$PROJECT_DIR$/BPositiveClient" />
   </component>
   <component name="ProjectRootManager" version="2" project-jdk-name="17" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
