@@ -1,8 +1,8 @@
 rootProject.name = 'BPositive'
 include 'BPositiveModel'
 include 'BPositiveRepository'
-include 'BPositiveServer'
-include 'BPositiveServices'
 include 'BPositiveNetworking'
+include 'BPositiveServer'
 include 'BPositiveClient'
+include 'BPositiveServices'
 
