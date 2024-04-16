@@ -6,7 +6,7 @@ import bpos.repository.Interfaces.CenterRepository;
 import bpos.repository.Utils.DBUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
+import java.sql.SQLException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -74,38 +74,117 @@ public class DBCenterRepository implements CenterRepository {
         return list.isEmpty()?null:list.get(0);
     }
 
-    @Override
-    public Center findByPhoneNumber(String phoneNumber) {
-        return null;
-    }
 
     @Override
     public Iterable<Center> findByName(String name) {
-        return null;
+
+        return findAllUtilitary(List.of("nume_Centru"),List.of(name));
     }
 
     @Override
     public Optional<Center> findOne(Integer integer) {
-        return Optional.empty();
+
+        List<Center> list= (List<Center>) findAllUtilitary(List.of("id_Centru") ,List.of(integer));
+        return list.isEmpty()?Optional.empty():Optional.of(list.get(0));
     }
 
     @Override
-    public Iterable<Center> findAll() {
-        return null;
+    public Iterable<Center> findAll(){
+
+        return findAllUtilitary(null,null);
     }
 
     @Override
     public Optional<Center> save(Center entity) {
-        return Optional.empty();
+        if(entity==null)
+        {
+            String m="Cannot save center if entity is null!\n";
+            logger.traceExit("Sent error from repo {}",m);
+            throw new IllegalArgumentException(m);
+        }
+        if(centerValidator!=null)
+        {
+            centerValidator.validate(entity);
+        }
+        int result=0;
+        Connection con=dbUtils.getConnection();
+        try (PreparedStatement preparedStatement=con.prepareStatement("INSERT INTO Centru(nume,informatii,adresa,credentiale_logare) VALUES (?,?,?,?,?)",PreparedStatement.RETURN_GENERATED_KEYS))
+        {
+            preparedStatement.setString(1,entity.getCenterName());
+            preparedStatement.setString(2,entity.getInstitutionDetails());
+            preparedStatement.setString(3,entity.getAddress());
+            preparedStatement.setInt(4,entity.getLogInfo().getId());
+
+
+            result=preparedStatement.executeUpdate();
+            try(ResultSet generatedKeys=preparedStatement.getGeneratedKeys())
+            {
+                if(generatedKeys.next())
+                {
+                    entity.setId(generatedKeys.getInt(1));
+                }
+            }
+        }
+        catch (SQLException e)
+        {
+            logger.error(e);
+            System.out.println("Error finding all elements DB"+ e);
+        }
+        return Optional.of(entity);
+
     }
 
     @Override
     public Optional<Center> delete(Center entity) {
-        return Optional.empty();
+
+        if(entity==null)
+        {
+            logger.error("Cannot delete center if entity is null!");
+            throw new IllegalArgumentException("Cannot delete center if entity is null!");
+        }
+        String sql="DELETE FROM Centru WHERE credentiale_logare=?";
+        Connection con=dbUtils.getConnection();
+        try (PreparedStatement preparedStatement=con.prepareStatement(sql))
+        {
+            preparedStatement.setInt(1,entity.getId());
+            preparedStatement.executeUpdate();
+        }
+        catch (SQLException e)
+        {
+            logger.error(e);
+            System.out.println("Error finding all elements DB"+ e);
+        }
+        return Optional.of(entity);
     }
 
     @Override
     public Optional<Center> update(Center entity) {
-        return Optional.empty();
+
+        if(entity==null)
+        {
+            String m="Cannot update center if entity is null!\n";
+            logger.traceExit("Sent error from repo {}",m);
+            throw new IllegalArgumentException(m);
+        }
+        if(centerValidator!=null)
+        {
+            centerValidator.validate(entity);
+        }
+        int result=0;
+        Connection con=dbUtils.getConnection();
+        try (PreparedStatement preparedStatement=con.prepareStatement("UPDATE Centru SET nume=?,informatii=?,adresa=? WHERE credentiale_logare=?"))
+        {
+            preparedStatement.setString(1,entity.getCenterName());
+            preparedStatement.setString(2,entity.getInstitutionDetails());
+            preparedStatement.setString(3,entity.getAddress());
+            preparedStatement.setInt(4,entity.getLogInfo().getId());
+            result=preparedStatement.executeUpdate();
+        }
+        catch (SQLException e)
+        {
+            logger.error(e);
+            System.out.println("Error finding all elements DB"+ e);
+        }
+        return Optional.of(entity);
     }
 }
