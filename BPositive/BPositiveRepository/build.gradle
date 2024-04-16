@@ -1,6 +1,5 @@
 plugins {
     id 'java'
-    id 'application'
 }
 
 group = 'bpos.repository'
@@ -11,6 +10,7 @@ repositories {
 }
 
 dependencies {
+
     implementation project(':BPositiveModel')
     testImplementation 'org.junit.jupiter:junit-jupiter'
     runtimeOnly group: 'org.xerial', name: 'sqlite-jdbc', version: '3.16.1'

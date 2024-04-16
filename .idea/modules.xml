@@ -3,12 +3,24 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/BPositive.iml" filepath="$PROJECT_DIR$/BPositive.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/BPositiveClient/BPositive.BPositiveClient.iml" filepath="$PROJECT_DIR$/.idea/modules/BPositiveClient/BPositive.BPositiveClient.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/BPositiveClient/BPositive.BPositiveClient.main.iml" filepath="$PROJECT_DIR$/.idea/modules/BPositiveClient/BPositive.BPositiveClient.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/BPositiveClient/BPositive.BPositiveClient.test.iml" filepath="$PROJECT_DIR$/.idea/modules/BPositiveClient/BPositive.BPositiveClient.test.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/BPositiveModel/BPositive.BPositiveModel.iml" filepath="$PROJECT_DIR$/.idea/modules/BPositiveModel/BPositive.BPositiveModel.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/BPositiveModel/BPositive.BPositiveModel.main.iml" filepath="$PROJECT_DIR$/.idea/modules/BPositiveModel/BPositive.BPositiveModel.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/BPositiveModel/BPositive.BPositiveModel.test.iml" filepath="$PROJECT_DIR$/.idea/modules/BPositiveModel/BPositive.BPositiveModel.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/BPositiveNetworking/BPositive.BPositiveNetworking.iml" filepath="$PROJECT_DIR$/.idea/modules/BPositiveNetworking/BPositive.BPositiveNetworking.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/BPositiveNetworking/BPositive.BPositiveNetworking.main.iml" filepath="$PROJECT_DIR$/.idea/modules/BPositiveNetworking/BPositive.BPositiveNetworking.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/BPositiveNetworking/BPositive.BPositiveNetworking.test.iml" filepath="$PROJECT_DIR$/.idea/modules/BPositiveNetworking/BPositive.BPositiveNetworking.test.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/BPositiveRepository/BPositive.BPositiveRepository.iml" filepath="$PROJECT_DIR$/.idea/modules/BPositiveRepository/BPositive.BPositiveRepository.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/BPositiveRepository/BPositive.BPositiveRepository.main.iml" filepath="$PROJECT_DIR$/.idea/modules/BPositiveRepository/BPositive.BPositiveRepository.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/BPositiveRepository/BPositive.BPositiveRepository.test.iml" filepath="$PROJECT_DIR$/.idea/modules/BPositiveRepository/BPositive.BPositiveRepository.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/BPositiveServer/BPositive.BPositiveServer.iml" filepath="$PROJECT_DIR$/.idea/modules/BPositiveServer/BPositive.BPositiveServer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/BPositiveServer/BPositive.BPositiveServer.main.iml" filepath="$PROJECT_DIR$/.idea/modules/BPositiveServer/BPositive.BPositiveServer.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/BPositiveServer/BPositive.BPositiveServer.test.iml" filepath="$PROJECT_DIR$/.idea/modules/BPositiveServer/BPositive.BPositiveServer.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/BPositiveServices/BPositive.BPositiveServices.iml" filepath="$PROJECT_DIR$/.idea/modules/BPositiveServices/BPositive.BPositiveServices.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/BPositiveServices/BPositive.BPositiveServices.main.iml" filepath="$PROJECT_DIR$/.idea/modules/BPositiveServices/BPositive.BPositiveServices.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/BPositiveServices/BPositive.BPositiveServices.test.iml" filepath="$PROJECT_DIR$/.idea/modules/BPositiveServices/BPositive.BPositiveServices.test.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/BPositive.main.iml" filepath="$PROJECT_DIR$/.idea/modules/BPositive.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/BPositive.test.iml" filepath="$PROJECT_DIR$/.idea/modules/BPositive.test.iml" />
       <module fileurl="file://$PROJECT_DIR$/BPositiveClient.iml" filepath="$PROJECT_DIR$/BPositiveClient.iml" />
