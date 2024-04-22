@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.List;
 
 public class DBGetters {
     public static Address getAddress(ResultSet resultSet) throws SQLException {
@@ -25,7 +26,7 @@ public class DBGetters {
         address.setId(id);
         return address;
     }
-    protected static Institution getInstitution(ResultSet resultSet) throws SQLException {
+    public static Institution getInstitution(ResultSet resultSet) throws SQLException {
         Integer id=resultSet.getInt("id_Institutie");
         String nume=resultSet.getString("nume_Institutie");
         String email=resultSet.getString("email_Institutie");
@@ -34,7 +35,7 @@ public class DBGetters {
         institution.setId(id);
         return institution;
     }
-    protected static DonationType getDonationType(ResultSet resultSet) throws SQLException {
+    public static DonationType getDonationType(ResultSet resultSet) throws SQLException {
         Integer id=resultSet.getInt("id_TipDonatie");
         String nume=resultSet.getString("nume_TipDonatie");
         int interval=resultSet.getInt("interval_asteptare_TipDonatie");
@@ -42,7 +43,7 @@ public class DBGetters {
         donationType.setId(id);
         return donationType;
     }
-    protected static PersonalData getPersonalData(ResultSet resultSet) throws SQLException {
+    public static PersonalData getPersonalData(ResultSet resultSet) throws SQLException {
          Integer id=resultSet.getInt("id_DatePersonale");
          String nume=resultSet.getString("nume_DatePersonale");
          String prenume=resultSet.getString("prenume_DatePersonale");
@@ -69,7 +70,7 @@ public class DBGetters {
         return coupon;
     }
 
-    protected static RetrievedCoupons getRetrievedCoupons(ResultSet resultSet) throws SQLException {
+    public static RetrievedCoupons getRetrievedCoupons(ResultSet resultSet) throws SQLException {
         Integer id=resultSet.getInt("id_CupoaneRetrieved");
         LocalDateTime receivedDate=resultSet.getTimestamp("preluat_la_data_de_CupoaneRetrieved").toLocalDateTime();
         LocalDateTime expirationDate=resultSet.getTimestamp("expira_la_CupoaneRetrieved").toLocalDateTime();
@@ -87,16 +88,19 @@ public class DBGetters {
         bloodTest.setId(id);
         return bloodTest;
     }
-    protected static MedicalInfo getMedicalInfo(ResultSet resultSet) throws SQLException {
+    public static MedicalInfo getMedicalInfo(ResultSet resultSet) throws SQLException {
         Integer id=resultSet.getInt("id_MedicalInformation");
         boolean eligibil=resultSet.getBoolean("eligibilitateDonare_MedicalInformation");
         BloodType grupaSanguina= BloodType.valueOf(resultSet.getString("grupaSange_MedicalInformation"));
         Rh rh = Rh.valueOf(resultSet.getString("rh_MedicalInformation"));
-        MedicalInfo medicalInfo=new MedicalInfo(eligibil,grupaSanguina,rh,new ArrayList<>());
+        BloodTest bloodTest=getBloodTest(resultSet);
+        List<BloodTest> bloodTests=new ArrayList<>();
+        bloodTests.add(bloodTest);
+        MedicalInfo medicalInfo=new MedicalInfo(eligibil,grupaSanguina,rh,bloodTests);
         medicalInfo.setId(id);
         return medicalInfo;
     }
-    protected static LogInfo getLogInfo(ResultSet resultSet) throws SQLException {
+    public static LogInfo getLogInfo(ResultSet resultSet) throws SQLException {
         Integer id=resultSet.getInt("id_LogInInfo");
         String username=resultSet.getString("username_LogInInfo");
         String password=resultSet.getString("password_LogInInfo");
@@ -118,7 +122,7 @@ public class DBGetters {
         center.setId(id);
         return center;
     }
-    protected static Donation getDonation(ResultSet resultSet) throws SQLException {
+    public static Donation getDonation(ResultSet resultSet) throws SQLException {
         Integer id=resultSet.getInt("id_Donatie");
         int puncte=resultSet.getInt("puncte_Donatie");
         DonationType donationType=getDonationType(resultSet);
@@ -126,7 +130,7 @@ public class DBGetters {
         donation.setId(id);
         return donation;
     }
-    protected static Person getPerson(ResultSet resultSet) throws SQLException {
+    public static Person getPerson(ResultSet resultSet) throws SQLException {
         int id=resultSet.getInt("id_Person");
         LogInfo logInfo=getLogInfo(resultSet);
         Integer points=resultSet.getInt("puncte_Person");
@@ -138,7 +142,7 @@ public class DBGetters {
         return person;
 
     }
-    protected static Student getStudent(ResultSet resultSet) throws SQLException {
+    public static Student getStudent(ResultSet resultSet) throws SQLException {
         int id=resultSet.getInt("id_Student");
         String department=resultSet.getString("departament_Student");
         String faculty=resultSet.getString("facultate_Student");
@@ -150,4 +154,18 @@ public class DBGetters {
         return student;
     }
 
+    public static Event getEvent(ResultSet resultSet) throws SQLException {
+        int id=resultSet.getInt("id_Eveniment");
+        String nume=resultSet.getString("nume_Eveniment");
+        LocalDateTime dataStart= LocalDateTime.parse(resultSet.getString("data_incepere_Eveniment"));
+        LocalDateTime dataEnd= LocalDateTime.parse(resultSet.getString("data_sfarsit_Eveniment"));
+        LocalDateTime dataAnunt= LocalDateTime.parse(resultSet.getString("data_Anunt_Eveniment"));
+        int maxParticipanti=resultSet.getInt("max_Participanti_Eveniment");
+        String cerinte=resultSet.getString("cerinte_Eveniment");
+        String descriere=resultSet.getString("descriere_Eveniment");
+        Center center=getCenter(resultSet);
+        Event event=new Event(nume,dataStart,dataEnd,dataAnunt,maxParticipanti,cerinte,descriere,center);
+        event.setId(id);
+        return event;
+    }
 }
