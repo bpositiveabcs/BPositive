@@ -1,11 +1,18 @@
 package bpos.server;
 
+import bpos.model.Center;
+import bpos.model.Event;
+import bpos.model.LogInfo;
+import bpos.model.Person;
 import bpos.repository.Implementations.*;
+import bpos.services.IObserver;
 import bpos.services.IServiceImpl;
 import bpos.services.ServicesExceptions;
 
+import java.rmi.ServerException;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 public class ServerImlp implements IServiceImpl {
@@ -21,6 +28,7 @@ public class ServerImlp implements IServiceImpl {
     private DBCouponRepository dbCoupon;
     private DBDonationRepository dbDonation;
     private DBDonationTypeRepository dbDonationType;
+    private Map<String,IObserver> loggedClients;
 private DBEventRepository dbEvent;
 
     public ServerImlp(DBInstitutionRepository dbInstitution, DBLogInfoRepository dbLogInfo, DBMedicalInfoRepository dbMedicalInfo, DBPersonRepository dbPerson, DBPersonalDataRepository dbPersonalData, DBRetrievedCouponsRepository dbRetrievedCoupons, DBAddressRepository dbAddress, DBBloodTestRepository dbBloodTest, DBCenterRepository dbCenter, DBCouponRepository dbCoupon, DBDonationRepository dbDonation, DBDonationTypeRepository dbDonationType, DBEventRepository dbEvent) {
@@ -121,7 +129,6 @@ private DBEventRepository dbEvent;
     public Iterable<bpos.model.Coupon> findAllCoupons() throws ServicesExceptions {
         return dbCoupon.findAll();
     }
-
 
 
     @Override
@@ -262,11 +269,6 @@ private DBEventRepository dbEvent;
         return  dbMedicalInfo.findByBloodTypeAndRh(bloodType,rh);
     }
 
-//    @Override
-//    public Iterable<bpos.model.PersonalData> findAllUtilitaryPersonalData(List<String> attributes, List<Object> values) throws ServicesExceptions {
-//        return null;
-//    }
-
     @Override
     public Optional<bpos.model.PersonalData> findOnePersonalData(Integer integer) throws ServicesExceptions {
         return dbPersonalData.findOne(integer);
@@ -291,11 +293,6 @@ private DBEventRepository dbEvent;
     public bpos.model.PersonalData findByCnpPersonalData(String cnp) throws ServicesExceptions {
         return dbPersonalData.findByCnp(cnp);
     }
-
-//    @Override
-//    public Iterable<bpos.model.Person> findAllUtilitaryPerson(List<String> attributes, List<Object> values) throws ServicesExceptions {
-//        return null;
-//    }
 
     @Override
     public Optional<bpos.model.Person> findOnePerson(Integer integer) throws ServicesExceptions {
@@ -337,10 +334,6 @@ private DBEventRepository dbEvent;
         return dbPerson.findByUsername(username);
     }
 
-//    @Override
-//    public Iterable<bpos.model.RetrievedCoupons> findAllUtilitaryRetrieved(List<String> attributes, List<Object> values) throws ServicesExceptions {
-//        return null;
-//    }
 
     @Override
     public Optional<bpos.model.RetrievedCoupons> findOneRetrieved(Integer integer) throws ServicesExceptions {
@@ -365,6 +358,54 @@ private DBEventRepository dbEvent;
     @Override
     public Iterable<bpos.model.RetrievedCoupons> findByDateRetrieved(String date) throws ServicesExceptions {
         return dbRetrievedCoupons.findByDate(date);
+    }
+
+    @Override
+    public  synchronized  Optional<Person> login(LogInfo logInfo, IObserver observer) throws ServicesExceptions {
+        if(dbLogInfo.findByUsername(logInfo.getUsername())==null)
+        {
+            throw new ServicesExceptions("Username does not exist");
+        }
+        Person person = dbPerson.findByUsername(logInfo.getUsername());
+        Person person1=dbPerson.findByEmail(logInfo.getEmail());
+        if(person!=null && person.equals(person1)){
+            if(loggedClients.get(person.getPersonLogInfo().getPassword())!=null){
+                throw new ServicesExceptions("User already logged in.");
+            }
+        }
+        else{
+                throw new ServicesExceptions("Authentication failed.");
+        }
+            loggedClients.put(person.getPersonLogInfo().getPassword(), observer);
+
+        return Optional.of(person);
+    }
+
+    @Override
+    public Optional<Center> loginCenter(LogInfo logInfo , IObserver observer) throws ServicesExceptions {
+        if(dbLogInfo.findByUsername(logInfo.getUsername())==null)
+        {
+            throw new ServicesExceptions("Username does not exist");
+        }
+        Center center = dbCenter.findByUsername(logInfo.getUsername());
+        Center center1=dbCenter.findByEmail(logInfo.getEmail());
+        if(center!=null && center.equals(center1)) {
+            if (loggedClients.get(center.getLogInfo().getPassword()) != null) {
+                throw new ServicesExceptions("User already logged in.");
+            }
+        }else{
+                throw new ServicesExceptions("Authentication failed.");
+        }
+
+        loggedClients.put(center.getLogInfo().getPassword(),observer);
+        return Optional.of(center);
+    }
+
+    @Override
+    public void logout(String password, IObserver observer) throws ServicesExceptions {
+        IObserver localClient=loggedClients.remove(password);
+        if (localClient==null)
+            throw new ServicesExceptions("User "+password+" is not logged in.");
     }
 
     @Override
@@ -469,7 +510,34 @@ private DBEventRepository dbEvent;
 
     @Override
     public Optional<bpos.model.Event> saveEvent(bpos.model.Event entity) throws ServicesExceptions {
-        return dbEvent.save(entity);
+        Optional<Event> event = dbEvent.save(entity);
+        event.ifPresent(this::notifyTheOthers);
+        return event;
+    }
+
+    private void notifyTheOthers(Event event) {
+            Iterable<Person> personIterable=dbPerson.findAll();
+            Iterable<Center>personCenter=dbCenter.findAll();
+            personIterable.forEach(person -> {
+                IObserver client=loggedClients.get(person.getPersonLogInfo().getPassword());
+                if(client!=null){
+                    try {
+                        client.eventHappened( event);
+                    } catch (ServicesExceptions e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+            });
+            personCenter.forEach(center -> {
+                IObserver client=loggedClients.get(center.getLogInfo().getPassword());
+                if(client!=null){
+                    try {
+                        client.eventHappened(event);
+                    } catch (ServicesExceptions e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+            });
     }
 
     @Override

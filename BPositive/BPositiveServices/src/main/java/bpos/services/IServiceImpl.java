@@ -130,5 +130,9 @@ public interface IServiceImpl {
     Iterable<RetrievedCoupons> findByCouponIdRetrieved(Integer couponId) throws ServicesExceptions;
     Iterable<RetrievedCoupons> findByPersonIdRetrieved(Integer personId) throws ServicesExceptions;
     Iterable<RetrievedCoupons> findByDateRetrieved(String date) throws ServicesExceptions;
+    //login stuff
+    Optional<Person> login(LogInfo logInfo,IObserver observer) throws ServicesExceptions;
+    Optional<Center>loginCenter(LogInfo logInfo,IObserver observer) throws ServicesExceptions;
 
+    void  logout(String password,IObserver observer) throws ServicesExceptions;
 }
