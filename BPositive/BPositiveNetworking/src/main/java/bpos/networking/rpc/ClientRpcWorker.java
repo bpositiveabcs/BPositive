@@ -1038,6 +1038,175 @@ public class ClientRpcWorker implements Runnable, IObserver{
                 return new Response.Builder().type(ResponseType.ERROR).data(e.getMessage()).build();
             }
         }
+        if (request.type()== RequestType.savePersonalData){
+            System.out.println("Get all persons request ..."+request.type());
+            try {
+                PersonalDataDTO institution=(PersonalDataDTO) request.data();
+                PersonalData inst=DTOUtils.getFromDTOPersonalData(institution);
+                Optional<PersonalData> persons=server.savePersonalData(inst);
+                return new Response.Builder().type(ResponseType.savePersonalData).data(DTOUtils.getDTOPersonalData(persons)).build();
+            } catch (ServicesExceptions e) {
+                connected=false;
+                return new Response.Builder().type(ResponseType.ERROR).data(e.getMessage()).build();
+            }
+        }
+        if (request.type()== RequestType.deletePersonalData){
+            System.out.println("Get all persons request ..."+request.type());
+            try {
+                PersonalDataDTO institution=(PersonalDataDTO) request.data();
+                PersonalData inst=DTOUtils.getFromDTOPersonalData(institution);
+                Optional<PersonalData> persons=server.deletePersonalData(inst);
+                return new Response.Builder().type(ResponseType.deletePersonalData).data(DTOUtils.getDTOPersonalData(persons)).build();
+            } catch (ServicesExceptions e) {
+                connected=false;
+                return new Response.Builder().type(ResponseType.ERROR).data(e.getMessage()).build();
+            }
+        }
+        if (request.type()== RequestType.updatePersonalData){
+            System.out.println("Get all persons request ..."+request.type());
+            try {
+                PersonalDataDTO institution=(PersonalDataDTO) request.data();
+                PersonalData inst=DTOUtils.getFromDTOPersonalData(institution);
+                Optional<PersonalData> persons=server.updatePersonalData(inst);
+                return new Response.Builder().type(ResponseType.updatePersonalData).data(DTOUtils.getDTOPersonalData(persons)).build();
+            } catch (ServicesExceptions e) {
+                connected=false;
+                return new Response.Builder().type(ResponseType.ERROR).data(e.getMessage()).build();
+            }
+        }
+
+        if (request.type()== RequestType.FIND_ONE_PERSON){
+            System.out.println("Get all persons request ..."+request.type());
+            try {
+                String institution=(String) request.data();
+                //Person personDTO=DTOUtils.getFromDTOPerson(institution);
+                Optional<Person> persons=server.findOnePerson(Integer.valueOf(institution));
+                return new Response.Builder().type(ResponseType.FIND_ONE_PERSON).data(DTOUtils.getDTOPerson(persons)).build();
+            } catch (ServicesExceptions e) {
+                connected=false;
+                return new Response.Builder().type(ResponseType.ERROR).data(e.getMessage()).build();
+            }
+        }
+        if (request.type()== RequestType.FIND_ALL_PERSON){
+            System.out.println("Get all persons request ..."+request.type());
+            try {
+                Iterable<Person> persons=server.findAllPersons();
+                return new Response.Builder().type(ResponseType.FIND_ALL_PERSON).data(DTOUtils.getDTOPersonList(persons)).build();
+            } catch (ServicesExceptions e) {
+                connected=false;
+                return new Response.Builder().type(ResponseType.ERROR).data(e.getMessage()).build();
+            }
+        }
+        if (request.type()== RequestType.FIND_BY_FIRST_NAME_PERSON){
+            System.out.println("Get all persons request ..."+request.type());
+            try {
+                String st=(String)request.data();
+                Iterable<Person> persons=server.findByFirstNamePerson(st);
+                return new Response.Builder().type(ResponseType.FIND_BY_FIRST_NAME_PERSON).data(DTOUtils.getDTOPersonList(persons)).build();
+            } catch (ServicesExceptions e) {
+                connected=false;
+                return new Response.Builder().type(ResponseType.ERROR).data(e.getMessage()).build();
+            }
+        }
+        if (request.type()== RequestType.FIND_BY_LAST_NAME_PERSON){
+            System.out.println("Get all persons request ..."+request.type());
+            try {
+                String st=(String)request.data();
+                Iterable<Person> persons=server.findByLastNamePerson(st);
+                return new Response.Builder().type(ResponseType.FIND_BY_LAST_NAME_PERSON).data(DTOUtils.getDTOPersonList(persons)).build();
+            } catch (ServicesExceptions e) {
+                connected=false;
+                return new Response.Builder().type(ResponseType.ERROR).data(e.getMessage()).build();
+            }
+        }
+        if (request.type()== RequestType.FIND_BY_CNP_PERSON){
+            System.out.println("Get all persons request ..."+request.type());
+            try {
+                String st=(String)request.data();
+                Iterable<Person> persons=server.findByCnpPerson(st);
+                return new Response.Builder().type(ResponseType.FIND_BY_CNP_PERSON).data(DTOUtils.getDTOPersonList(persons)).build();
+            } catch (ServicesExceptions e) {
+                connected=false;
+                return new Response.Builder().type(ResponseType.ERROR).data(e.getMessage()).build();
+            }
+        }
+        if (request.type()== RequestType.FIND_BY_PHONE_NUMBER_PERSON){
+            System.out.println("Get all persons request ..."+request.type());
+            try {
+                String st=(String)request.data();
+                Iterable<Person> persons=server.findByPhoneNumberPerson(st);
+                return new Response.Builder().type(ResponseType.FIND_BY_PHONE_NUMBER_PERSON).data(DTOUtils.getDTOPersonList(persons)).build();
+            } catch (ServicesExceptions e) {
+                connected=false;
+                return new Response.Builder().type(ResponseType.ERROR).data(e.getMessage()).build();
+            }
+        }
+        if (request.type()== RequestType.FIND_BY_EMAIL_PERSON){
+            System.out.println("Get all persons request ..."+request.type());
+            try {
+                String institution=(String) request.data();
+                //Person personDTO=DTOUtils.getFromDTOPerson(institution);
+               Person persons=server.findByEmailPerson(institution);
+                return new Response.Builder().type(ResponseType.FIND_BY_EMAIL_PERSON).data(DTOUtils.getDTOPerson(Optional.ofNullable(persons))).build();
+            } catch (ServicesExceptions e) {
+                connected=false;
+                return new Response.Builder().type(ResponseType.ERROR).data(e.getMessage()).build();
+            }
+        }
+        if (request.type()== RequestType.FIND_BY_USERNAME_PERSON){
+            System.out.println("Get all persons request ..."+request.type());
+            try {
+                String institution=(String) request.data();
+                //Person personDTO=DTOUtils.getFromDTOPerson(institution);
+                Person persons=server.findByUsernamePerson(institution);
+                return new Response.Builder().type(ResponseType.FIND_BY_USERNAME_PERSON).data(DTOUtils.getDTOPerson(Optional.ofNullable(persons))).build();
+            } catch (ServicesExceptions e) {
+                connected=false;
+                return new Response.Builder().type(ResponseType.ERROR).data(e.getMessage()).build();
+            }
+        }
+        if (request.type()== RequestType.savePerson){
+            System.out.println("Get all persons request ..."+request.type());
+            try {
+                PersonDTO institution=(PersonDTO) request.data();
+                Person pers=DTOUtils.getFromDTOPerson(institution);
+                //Person personDTO=DTOUtils.getFromDTOPerson(institution);
+                Optional<Person> persons=server.savePerson(pers);
+                return new Response.Builder().type(ResponseType.savePerson).data(DTOUtils.getDTOPerson(persons)).build();
+            } catch (ServicesExceptions e) {
+                connected=false;
+                return new Response.Builder().type(ResponseType.ERROR).data(e.getMessage()).build();
+            }
+        }
+        if (request.type()== RequestType.deletePerson){
+            System.out.println("Get all persons request ..."+request.type());
+            try {
+                PersonDTO institution=(PersonDTO) request.data();
+                Person pers=DTOUtils.getFromDTOPerson(institution);
+                //Person personDTO=DTOUtils.getFromDTOPerson(institution);
+                Optional<Person> persons=server.deletePerson(pers);
+                return new Response.Builder().type(ResponseType.deletePerson).data(DTOUtils.getDTOPerson(persons)).build();
+            } catch (ServicesExceptions e) {
+                connected=false;
+                return new Response.Builder().type(ResponseType.ERROR).data(e.getMessage()).build();
+            }
+        }
+        if (request.type()== RequestType.updatePerson){
+            System.out.println("Get all persons request ..."+request.type());
+            try {
+                PersonDTO institution=(PersonDTO) request.data();
+                Person pers=DTOUtils.getFromDTOPerson(institution);
+                //Person personDTO=DTOUtils.getFromDTOPerson(institution);
+                Optional<Person> persons=server.updatePerson(pers);
+                return new Response.Builder().type(ResponseType.updatePerson).data(DTOUtils.getDTOPerson(persons)).build();
+            } catch (ServicesExceptions e) {
+                connected=false;
+                return new Response.Builder().type(ResponseType.ERROR).data(e.getMessage()).build();
+            }
+        }
+        
+
+
 
 
 
