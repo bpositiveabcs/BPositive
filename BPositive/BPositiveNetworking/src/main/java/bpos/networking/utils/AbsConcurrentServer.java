@@ -5,7 +5,7 @@ import java.net.Socket;
 public abstract class AbsConcurrentServer extends AbstractServer {
     public AbsConcurrentServer(int port) {
         super(port);
-        //System.out.println("Concurrent AbstractServer");
+        System.out.println("Concurrent AbstractServer");
     }
 
     protected void processRequest(Socket client) {

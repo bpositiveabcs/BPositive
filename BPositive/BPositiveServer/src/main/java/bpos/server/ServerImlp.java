@@ -1,15 +1,11 @@
 package bpos.server;
 
-import bpos.model.Center;
-import bpos.model.Event;
-import bpos.model.LogInfo;
-import bpos.model.Person;
+import bpos.model.*;
 import bpos.repository.Implementations.*;
 import bpos.services.IObserver;
 import bpos.services.IServiceImpl;
 import bpos.services.ServicesExceptions;
 
-import java.rmi.ServerException;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
@@ -28,10 +24,12 @@ public class ServerImlp implements IServiceImpl {
     private DBCouponRepository dbCoupon;
     private DBDonationRepository dbDonation;
     private DBDonationTypeRepository dbDonationType;
-    private Map<String,IObserver> loggedClients;
+    private DBStudentRepository dbStudent;
+    private Map<Integer,IObserver> loggedClients;
+    private Map<Integer,IObserver> loggedCenter;
 private DBEventRepository dbEvent;
 
-    public ServerImlp(DBInstitutionRepository dbInstitution, DBLogInfoRepository dbLogInfo, DBMedicalInfoRepository dbMedicalInfo, DBPersonRepository dbPerson, DBPersonalDataRepository dbPersonalData, DBRetrievedCouponsRepository dbRetrievedCoupons, DBAddressRepository dbAddress, DBBloodTestRepository dbBloodTest, DBCenterRepository dbCenter, DBCouponRepository dbCoupon, DBDonationRepository dbDonation, DBDonationTypeRepository dbDonationType, DBEventRepository dbEvent) {
+    public ServerImlp(DBInstitutionRepository dbInstitution, DBLogInfoRepository dbLogInfo, DBMedicalInfoRepository dbMedicalInfo, DBPersonRepository dbPerson, DBPersonalDataRepository dbPersonalData, DBRetrievedCouponsRepository dbRetrievedCoupons, DBAddressRepository dbAddress, DBBloodTestRepository dbBloodTest, DBCenterRepository dbCenter, DBCouponRepository dbCoupon, DBDonationRepository dbDonation, DBDonationTypeRepository dbDonationType, DBEventRepository dbEvent, DBStudentRepository dbStudent) {
         this.dbInstitution = dbInstitution;
         this.dbLogInfo = dbLogInfo;
         this.dbMedicalInfo = dbMedicalInfo;
@@ -45,6 +43,9 @@ private DBEventRepository dbEvent;
         this.dbDonation = dbDonation;
         this.dbDonationType = dbDonationType;
         this.dbEvent = dbEvent;
+        this.dbStudent = dbStudent;
+        this.loggedClients= new java.util.HashMap<>();
+        this.loggedCenter=new java.util.HashMap<>();
     }
 
 //    @Override
@@ -361,6 +362,61 @@ private DBEventRepository dbEvent;
     }
 
     @Override
+    public Optional<Student> findOneStudent(Integer integer) throws ServicesExceptions {
+        return dbStudent.findOne(integer);
+    }
+
+    @Override
+    public Iterable<Student> findAllStudent() throws ServicesExceptions {
+        return dbStudent.findAll();
+    }
+
+    @Override
+    public Optional<Student> saveStudent(Student entity) throws ServicesExceptions {
+        return dbStudent.save(entity);
+    }
+
+    @Override
+    public Optional<Student> deleteStudent(Student entity) throws ServicesExceptions {
+        return dbStudent.delete(entity);
+    }
+
+    @Override
+    public Optional<Student> updateStudent(Student entity) throws ServicesExceptions {
+        return dbStudent.update(entity);
+    }
+
+    @Override
+    public Iterable<Student> findByFirstNameStudent(String firstName) throws ServicesExceptions {
+        return dbStudent.findByFirstName(firstName);
+    }
+
+    @Override
+    public Iterable<Student> findByLastNameStudent(String lastName) throws ServicesExceptions {
+        return dbStudent.findByLastName(lastName);
+    }
+
+    @Override
+    public Iterable<Student> findByCnpStudent(String cnp) throws ServicesExceptions {
+        return dbStudent.findByCnp(cnp);
+    }
+
+    @Override
+    public Student findByEmailStudent(String email) throws ServicesExceptions {
+        return dbStudent.findByEmail(email);
+    }
+
+    @Override
+    public Iterable<Student> findByPhoneNumberStudent(String phoneNumber) throws ServicesExceptions {
+        return dbStudent.findByPhoneNumber(phoneNumber);
+    }
+
+    @Override
+    public Student findByUsernameStudent(String username) throws ServicesExceptions {
+        return dbStudent.findByUsername(username);
+    }
+
+    @Override
     public  synchronized  Optional<Person> login(LogInfo logInfo, IObserver observer) throws ServicesExceptions {
         if(dbLogInfo.findByUsername(logInfo.getUsername())==null)
         {
@@ -369,20 +425,34 @@ private DBEventRepository dbEvent;
         Person person = dbPerson.findByUsername(logInfo.getUsername());
         Person person1=dbPerson.findByEmail(logInfo.getEmail());
         if(person!=null && person.equals(person1)){
-            if(loggedClients.get(person.getPersonLogInfo().getPassword())!=null){
+            if(loggedClients.get(person.getId())!=null){
                 throw new ServicesExceptions("User already logged in.");
             }
         }
         else{
                 throw new ServicesExceptions("Authentication failed.");
         }
-            loggedClients.put(person.getPersonLogInfo().getPassword(), observer);
-
+            loggedClients.put(person.getId(), observer);
+        notifyTheOthersLogInPerson(person);
         return Optional.of(person);
     }
 
+    private void notifyTheOthersLogInPerson(Person person) {
+        Iterable<Person> personIterable=dbPerson.findAll();
+        personIterable.forEach(person1 -> {
+            IObserver client=loggedClients.get(person1.getId());
+            if(client!=null){
+                try {
+                    client.loginPersonEvent(person);
+                } catch (ServicesExceptions e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
+    }
+
     @Override
-    public Optional<Center> loginCenter(LogInfo logInfo , IObserver observer) throws ServicesExceptions {
+    public synchronized Optional<Center> loginCenter(LogInfo logInfo , IObserver observer) throws ServicesExceptions {
         if(dbLogInfo.findByUsername(logInfo.getUsername())==null)
         {
             throw new ServicesExceptions("Username does not exist");
@@ -390,22 +460,108 @@ private DBEventRepository dbEvent;
         Center center = dbCenter.findByUsername(logInfo.getUsername());
         Center center1=dbCenter.findByEmail(logInfo.getEmail());
         if(center!=null && center.equals(center1)) {
-            if (loggedClients.get(center.getLogInfo().getPassword()) != null) {
+            if (loggedCenter.get(center.getId()) != null) {
                 throw new ServicesExceptions("User already logged in.");
             }
         }else{
                 throw new ServicesExceptions("Authentication failed.");
         }
 
-        loggedClients.put(center.getLogInfo().getPassword(),observer);
+        loggedCenter.put(center.getId(),observer);
+        notifyLogInCenter(center);
         return Optional.of(center);
     }
 
     @Override
-    public void logout(String password, IObserver observer) throws ServicesExceptions {
-        IObserver localClient=loggedClients.remove(password);
+    public void logoutCenter(Center center, IObserver observer) throws ServicesExceptions {
+        IObserver localClient=loggedCenter.remove(center.getId());
+        if (localClient==null)
+            throw new ServicesExceptions("User "+center+" is not logged in.");
+        notifyLogOutCenter(center);
+    }
+
+    private void notifyLogOutCenter(Center center) {
+        Iterable<Center> centerIterable=dbCenter.findAll();
+        centerIterable.forEach(center1 -> {
+            IObserver client=loggedCenter.get(center1.getId());
+            if(client!=null){
+                try {
+                    client.logoutCenterEvent(center);
+                } catch (ServicesExceptions e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
+    }
+
+    private void notifyLogInCenter(Center center) {
+        Iterable<Center> centerIterable=dbCenter.findAll();
+        centerIterable.forEach(center1 -> {
+            IObserver client=loggedCenter.get(center1.getId());
+            if(client!=null){
+                try {
+                    client.loginCenterEvent(center);
+                } catch (ServicesExceptions e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
+    }
+
+    @Override
+    public synchronized  void  logoutPerson(Person password, IObserver observer) throws ServicesExceptions {
+        IObserver localClient=loggedClients.remove(password.getId());
         if (localClient==null)
             throw new ServicesExceptions("User "+password+" is not logged in.");
+        notifyLogOutPerson(password);
+    }
+
+    @Override
+    public void donationRegister(Donation donation, Person person, Event event) throws ServicesExceptions {
+        Optional<Donation> donationOptional = dbDonation.save(donation);
+        List<Donation> donationArrayList=person.getDonations();
+        donationArrayList.add(donation);
+       // List<Event> eventArrayList=person.get();
+        person.setDonations(donationArrayList);
+        Optional<Person> personOptional = dbPerson.update(person);
+        event.setMaxParticipants(event.getMaxParticipants()+1);
+        Optional<Event> eventOptional = dbEvent.update(event);
+        if(personOptional.isPresent() && eventOptional.isPresent()&& donationOptional.isPresent()){
+             notifyDonationRegistered(donationOptional);
+
+        }
+        else{
+            throw new ServicesExceptions("Donation could not be registered");
+        }
+    }
+    private void notifyDonationRegistered(Optional<Donation> donationOptional) {
+        Iterable<Person> personIterable=dbPerson.findAll();
+        personIterable.forEach(person -> {
+            IObserver client=loggedClients.get(person.getId());
+            if(client!=null){
+                try {
+                    client.donationRegistered(donationOptional.get());
+                } catch (ServicesExceptions e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
+    }
+
+
+
+    private void notifyLogOutPerson(Person password) {
+        Iterable<Person> personIterable=dbPerson.findAll();
+        personIterable.forEach(person -> {
+            IObserver client=loggedClients.get(person.getId());
+            if(client!=null){
+                try {
+                    client.logoutPersonEvent(person);
+                } catch (ServicesExceptions e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
     }
 
     @Override
@@ -440,6 +596,7 @@ private DBEventRepository dbEvent;
 
     @Override
     public Optional<bpos.model.PersonalData> updatePersonalData(bpos.model.PersonalData entity) throws ServicesExceptions {
+
         return dbPersonalData.update(entity);
     }
 
@@ -629,4 +786,5 @@ private DBEventRepository dbEvent;
     public Optional<bpos.model.Address> saveAddress(bpos.model.Address entity) throws ServicesExceptions {
         return dbAddress.save(entity);
     }
+
 }

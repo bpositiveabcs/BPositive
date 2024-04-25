@@ -7,20 +7,20 @@ import java.util.Optional;
 
 public interface IServiceImpl {
     //Address services
-     //Iterable<Address> findAllUtilitaryAddress(List<String > attributes, List<Object> values) throws ServicesExceptions;
+
      Optional<Address> findOneAddress(Integer integer) throws ServicesExceptions;
      Iterable<Address> findAllAddresses() throws ServicesExceptions;
      Optional<Address> saveAddress(Address entity) throws ServicesExceptions;
      Optional<Address> deleteAddress(Address entity) throws ServicesExceptions;
      Optional<Address> updateAddress(Address entity) throws ServicesExceptions;
      Optional<BloodTest> findOneBloodTest(Integer integer) throws ServicesExceptions;
-     //Iterable<BloodTest> findAllUtilitaryBloodTest(List<String > attributes, List<Object> values) throws ServicesExceptions;
+
      Iterable<BloodTest> findAllBloodTest() throws ServicesExceptions;
      Optional<BloodTest> saveBloodTest(BloodTest entity) throws ServicesExceptions;
      Optional<BloodTest> deleteBloodTest(BloodTest entity) throws  ServicesExceptions;
      Optional<BloodTest> updateBloodTest(BloodTest entity) throws ServicesExceptions;
      //center
-     //Iterable<Center> findAllUtilitaryCenter(List<String > attributes, List<Object> values) throws ServicesExceptions;
+
     Center findByUsernameCenter(String username) throws ServicesExceptions;
     Center findByEmailCenter(String email) throws ServicesExceptions;
     Iterable<Center> findByNameCenter(String name) throws ServicesExceptions;
@@ -42,15 +42,14 @@ public interface IServiceImpl {
     Optional<Coupon> updateCoupon(Coupon entity) throws ServicesExceptions;
     //donation
    // Iterable<Donation> findAllUtilitaryDonation(List<String > attributes, List<Object> values) throws ServicesExceptions;
-    Iterable<Donation> findByTipDonation(String tipDonatie) throws ServicesExceptions;
-    Iterable<Donation> findByIdTipDonation(Integer idTipDonatie) throws ServicesExceptions;
+    Iterable<Donation> findByTipDonation(String tipDonation) throws ServicesExceptions;
+    Iterable<Donation> findByIdTipDonation(Integer tipDonation) throws ServicesExceptions;
     Optional<Donation> findOneDonation(Integer integer) throws ServicesExceptions;
     Iterable<Donation> findAllDonations() throws ServicesExceptions;
     Optional<Donation> saveDonation(Donation entity) throws ServicesExceptions;
     Optional<Donation> deleteDonation(Donation entity) throws ServicesExceptions;
     Optional<Donation> updateDonation(Donation entity) throws ServicesExceptions;
     //donationType
-    //Iterable<DonationType> findAllUtilitaryDonationType(List<String > attributes, List<Object> values) throws ServicesExceptions;
     Optional<DonationType> findOneDonationType(Integer integer) throws ServicesExceptions;
     Iterable<DonationType> findAllDonationType() throws ServicesExceptions;
     Optional<DonationType> saveDonationType(DonationType entity) throws ServicesExceptions;
@@ -69,7 +68,7 @@ public interface IServiceImpl {
     Optional<Event> deleteEvent(Event entity) throws ServicesExceptions;
     Optional<Event> updateEvent(Event entity) throws ServicesExceptions;
     //institution
-    //Iterable<Institution> findAllUtilitaryInstitution(List<String > attributes, List<Object> values) throws ServicesExceptions;
+
     Optional<Institution> findOneInstitution(Integer integer) throws ServicesExceptions;
     Iterable<Institution> findAllInstitutions() throws ServicesExceptions;
     Optional<Institution> saveInstitution(Institution entity) throws ServicesExceptions;
@@ -79,7 +78,6 @@ public interface IServiceImpl {
     Iterable<Institution> findByAddressInstitution(String address) throws ServicesExceptions;
     Iterable<Institution> findByEmailInstitution(String email) throws ServicesExceptions;
     //LogInfo
-    //Iterable<LogInfo> findAllUtilitaryLogInfo(List<String > attributes, List<Object> values) throws ServicesExceptions;
     Optional<LogInfo> findOneLogInfo(Integer integer) throws ServicesExceptions;
     Iterable<LogInfo> findAllLogInfos() throws ServicesExceptions;
     Optional<LogInfo> saveLogInfo(LogInfo entity) throws ServicesExceptions;
@@ -88,7 +86,6 @@ public interface IServiceImpl {
     LogInfo findByUsernameLogInfo(String username) throws ServicesExceptions;
     LogInfo findByEmailLogInfo(String email) throws ServicesExceptions;
     //medical info
-    //Iterable<MedicalInfo> findAllUtilitaryMedicalInfo(List<String > attributes, List<Object> values) throws ServicesExceptions;
     Optional<MedicalInfo> findOneMedicalInfo(Integer integer) throws ServicesExceptions;
     Iterable<MedicalInfo> findAllMedicalInfos() throws ServicesExceptions;
     Optional<MedicalInfo> saveMedicalInfo(MedicalInfo entity) throws ServicesExceptions;
@@ -98,7 +95,6 @@ public interface IServiceImpl {
     Iterable<MedicalInfo> findByRhMedicalInfo(String rh) throws ServicesExceptions;
     Iterable<MedicalInfo> findByBloodTypeAndRhMedicalInfo(String bloodType, String rh) throws ServicesExceptions;
     //pesonal dta
-    //Iterable<PersonalData> findAllUtilitaryPersonalData(List<String > attributes, List<Object> values) throws ServicesExceptions;
     Optional<PersonalData> findOnePersonalData(Integer integer) throws ServicesExceptions;
     Iterable<PersonalData> findAllPersonalDatas() throws ServicesExceptions;
     Optional<PersonalData> savePersonalData(PersonalData entity) throws ServicesExceptions;
@@ -108,7 +104,6 @@ public interface IServiceImpl {
     Iterable<PersonalData> findByLastNamePersonalData(String lastName) throws ServicesExceptions;
     PersonalData findByCnpPersonalData(String cnp) throws ServicesExceptions;
     //person services
-    //Iterable<Person> findAllUtilitaryPerson(List<String > attributes, List<Object> values) throws ServicesExceptions;
     Optional<Person> findOnePerson(Integer integer) throws ServicesExceptions;
     Iterable<Person> findAllPersons() throws ServicesExceptions;
     Optional<Person> savePerson(Person entity) throws ServicesExceptions;
@@ -130,9 +125,24 @@ public interface IServiceImpl {
     Iterable<RetrievedCoupons> findByCouponIdRetrieved(Integer couponId) throws ServicesExceptions;
     Iterable<RetrievedCoupons> findByPersonIdRetrieved(Integer personId) throws ServicesExceptions;
     Iterable<RetrievedCoupons> findByDateRetrieved(String date) throws ServicesExceptions;
+    //student
+    Optional<Student> findOneStudent(Integer integer) throws ServicesExceptions;
+    Iterable<Student> findAllStudent() throws ServicesExceptions;
+    Optional<Student> saveStudent(Student entity) throws ServicesExceptions;
+    Optional<Student> deleteStudent(Student entity) throws ServicesExceptions;
+    Optional<Student> updateStudent(Student entity) throws ServicesExceptions;
+    Iterable<Student> findByFirstNameStudent(String firstName) throws ServicesExceptions;
+    Iterable<Student> findByLastNameStudent(String lastName) throws ServicesExceptions;
+    Iterable<Student> findByCnpStudent(String cnp) throws ServicesExceptions;
+    Student findByEmailStudent(String email) throws ServicesExceptions;
+    Iterable<Student> findByPhoneNumberStudent(String phoneNumber) throws ServicesExceptions;
+    Student findByUsernameStudent(String username) throws ServicesExceptions;
+
     //login stuff
     Optional<Person> login(LogInfo logInfo,IObserver observer) throws ServicesExceptions;
     Optional<Center>loginCenter(LogInfo logInfo,IObserver observer) throws ServicesExceptions;
 
-    void  logout(String password,IObserver observer) throws ServicesExceptions;
+    void  logoutCenter(Center center,IObserver observer) throws ServicesExceptions;
+    void  logoutPerson(Person center,IObserver observer) throws ServicesExceptions;
+    void donationRegister(Donation donation, Person person, Event event) throws ServicesExceptions;
 }

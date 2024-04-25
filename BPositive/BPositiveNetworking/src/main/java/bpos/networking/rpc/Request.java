@@ -5,6 +5,15 @@ import java.io.Serializable;
 public class Request implements Serializable {
     private RequestType type;
     private Object data;
+    private Object data2;
+
+    public Object getData2() {
+        return data2;
+    }
+
+    public void setData2(Object data2) {
+        this.data2 = data2;
+    }
 
     private Request(){}
 
@@ -14,6 +23,9 @@ public class Request implements Serializable {
 
     public Object data(){
         return data;
+    }
+    public Object data2(){
+        return data2;
     }
 
 
@@ -38,6 +50,11 @@ public class Request implements Serializable {
             request.data(data);
             return this;
         }
+        public Builder data2(Object data2) {
+            request.data2(data2);
+            return this;
+        }
+
 
         public Request build() {
             return request;
@@ -46,6 +63,9 @@ public class Request implements Serializable {
 
     private void data(Object data) {
         this.data = data;
+    }
+    private void data2(Object data2) {
+        this.data2 = data2;
     }
 
     private void type(RequestType type) {

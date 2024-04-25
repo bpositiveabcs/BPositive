@@ -1,27 +1,27 @@
 package bpos.networking.utils;
 
-// lasam comentat pana avem networking si services ///
-/*
+import bpos.networking.rpc.ClientRpcWorker;
+import bpos.networking.utils.AbsConcurrentServer;
+import bpos.services.IServiceImpl;
 
 import java.net.Socket;
 
 public class RpcConcurrentServer extends AbsConcurrentServer {
-    private IServices server;
-
-    public RpcConcurrentServer(int port, IServices s) {
+    private IServiceImpl chatServer;
+    public RpcConcurrentServer(int port, IServiceImpl chatServer) {
         super(port);
-        this.server = s;
-        System.out.println("RpcConcurrentServer");
+        this.chatServer = chatServer;
+        System.out.println("Chat- ChatRpcConcurrentServer");
     }
 
+    @Override
     protected Thread createWorker(Socket client) {
-        ClientRpcWorker worker = new ClientRpcWorker(this.server, client);
-        Thread t = new Thread(worker);
-        return t;
+        ClientRpcWorker worker=new ClientRpcWorker(chatServer, client);
+        Thread tw=new Thread(worker);
+        return tw;
     }
-
-    public void stop() {
+    @Override
+    public void stop(){
         System.out.println("Stopping services ...");
     }
 }
-*/
