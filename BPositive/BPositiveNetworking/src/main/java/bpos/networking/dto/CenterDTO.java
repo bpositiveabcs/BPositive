@@ -3,7 +3,25 @@ package bpos.networking.dto;
 import bpos.model.LogInfo;
 
 public class CenterDTO implements java.io.Serializable{
+    private String id;
     private String institutionDetails;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public CenterDTO(String id, String institutionDetails, LogInfoDTO logInfo, String centerName, String address) {
+        this.id = id;
+        this.institutionDetails = institutionDetails;
+        this.logInfo = logInfo;
+        this.centerName = centerName;
+        this.address = address;
+    }
+
     private LogInfoDTO logInfo;
     private String centerName;
     private String address;

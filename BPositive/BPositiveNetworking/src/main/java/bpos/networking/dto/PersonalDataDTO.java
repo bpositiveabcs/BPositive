@@ -5,7 +5,28 @@ import bpos.model.Address;
 import java.time.LocalDate;
 
 public class PersonalDataDTO implements java.io.Serializable{
+    private String id;
     private AddressDTO address;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public PersonalDataDTO(String id, AddressDTO address, String phoneNumber, String firstName, String lastName, String cnp, String sex, String birthDate) {
+        this.id = id;
+        this.address = address;
+        this.phoneNumber = phoneNumber;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.cnp = cnp;
+        this.sex = sex;
+        this.birthDate = birthDate;
+    }
+
     private String phoneNumber;
     private String firstName;
     private String lastName;

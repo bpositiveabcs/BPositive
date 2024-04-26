@@ -4,8 +4,29 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 
 public class CouponDTO implements Serializable {
+    private String id;
     private String necessaryPoints;
     private String name;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public CouponDTO(String id, String necessaryPoints, String name, String provider, String offer, String unavailableToClaimFrom, String validityPeriod, String series) {
+        this.id = id;
+        this.necessaryPoints = necessaryPoints;
+        this.name = name;
+        this.provider = provider;
+        this.offer = offer;
+        this.unavailableToClaimFrom = unavailableToClaimFrom;
+        this.validityPeriod = validityPeriod;
+        this.series = series;
+    }
+
     private String provider;
     private String offer;
     private String unavailableToClaimFrom;

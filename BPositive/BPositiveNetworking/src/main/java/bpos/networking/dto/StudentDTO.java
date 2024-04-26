@@ -3,7 +3,26 @@ package bpos.networking.dto;
 import bpos.model.Institution;
 
 public class StudentDTO implements java.io.Serializable{
+    private String id;
     private String year;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public StudentDTO(String id, String year, String group, String faculty, String department, InstitutionDTO university) {
+        this.id = id;
+        this.year = year;
+        this.group = group;
+        this.faculty = faculty;
+        this.department = department;
+        this.university = university;
+    }
+
     private String group;
     private String faculty;
     private String department;
