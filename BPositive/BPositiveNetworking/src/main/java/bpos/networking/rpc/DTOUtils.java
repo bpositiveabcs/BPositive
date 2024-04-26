@@ -134,7 +134,7 @@ public class DTOUtils {
         return  null;
     }
 
-    public static PersonalData getDTOPersonalData(Optional<PersonalData> persons) {
+    public static PersonalDataDTO getDTOPersonalData(Optional<PersonalData> persons) {
         return null;
     }
 
@@ -171,6 +171,64 @@ public class DTOUtils {
     }
 
     public static Iterable<StudentDTO> getDTOStudentList(Iterable<Student> persons) {
+        return null;
+    }
+
+    public static Iterable<Address> getFromDTOAddressList(Iterable<AddressDTO> addressDTOS) {
+        return null;
+    }
+
+    public static Iterable<BloodTest> getFromDTOBloodTestList(Iterable<BloodTestDTO> addressDTOS) {
+        return  null;
+    }
+
+    public static Iterable<Center> getFromDTOCenterList(Iterable<CenterDTO> addressDTOS) {
+        return  null;
+    }
+
+    public static Iterable<Coupon> getFromDTOCouponList(Iterable<CouponDTO> addressDTOS) {
+        return null;
+    }
+
+    public static Iterable<Donation> getFromDTODonationList(Iterable<DonationDTO> addressDTOS) {
+        return null;
+    }
+
+    public static Iterable<DonationType> getFROMDTODonationTypeList(Iterable<DonationTypeDTO> addressDTOS) {
+        return null;
+    }
+
+    public static Iterable<Event> getFromDTOEventList(Iterable<EventDTO> addressDTOS) {
+        return null;
+    }
+
+    public static Iterable<Institution> getFromDTOInstitutionList(Iterable<InstitutionDTO> addressDTOS) {
+        return null;
+    }
+
+    public static Iterable<LogInfo> getFromDTOLogInfoList(Iterable<LogInfoDTO> addressDTOS) {
+        return null;
+    }
+
+    public static Iterable<MedicalInfo> getFromDTOMedicalInfoList(Iterable<MedicalInfoDTO> addressDTOS) {
+        return null;
+    }
+
+    public static Iterable<PersonalData> getFromDTOPersonalDataList(Iterable<PersonalDataDTO> addressDTOS) {
+        return null;
+    }
+
+    public static Iterable<Person> getFromDTOPersonList(Iterable<PersonDTO> addressDTOS) {
+        return null;
+    }
+
+
+
+    public static Iterable<RetrievedCoupons> getFromDTORetrievedCouponsList(Iterable<RetrivedCouponsDTO> addressDTOS) {
+        return null;
+    }
+
+    public static Iterable<Student> getFromDTOStudentList(Iterable<StudentDTO> addressDTOS) {
         return null;
     }
 }
