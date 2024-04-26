@@ -13,11 +13,18 @@ import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.Properties;
 
 public class DBDonationRepository implements DonationRepository {
     private DBUtils dbUtils;
     private static final Logger logger= LogManager.getLogger();
     private DonationValidator donationValidator;
+
+    public DBDonationRepository(Properties properties, DonationValidator donationValidator) {
+        this.dbUtils = new DBUtils(properties);
+        this.donationValidator = donationValidator;
+    }
+
     private Iterable<Donation> findAllUtilitary(List<String> attributes, List<Object> values)
     {
         Connection con=dbUtils.getConnection();

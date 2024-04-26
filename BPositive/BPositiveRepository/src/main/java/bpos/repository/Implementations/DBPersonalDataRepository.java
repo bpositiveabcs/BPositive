@@ -11,9 +11,16 @@ import org.apache.logging.log4j.Logger;
 import java.sql.Connection;
 import java.util.List;
 import java.util.Optional;
+import java.util.Properties;
 
 public class DBPersonalDataRepository implements PersonalDataRepository {
     private DBUtils dbUtils;
+
+    public DBPersonalDataRepository(Properties properties, PersonalDataValidator personalDataValidator) {
+        this.dbUtils = new DBUtils(properties);
+        this.personalDataValidator = personalDataValidator;
+    }
+
     private static final Logger logger= LogManager.getLogger();
     private PersonalDataValidator personalDataValidator;
     private Iterable<PersonalData> findAllUtilitary(List<String> attributes, List<Object> values)

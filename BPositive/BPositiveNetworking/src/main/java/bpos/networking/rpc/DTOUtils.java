@@ -149,4 +149,28 @@ public class DTOUtils {
     public static Iterable<PersonDTO> getDTOPersonList(Iterable<Person> persons) {
         return null;
     }
+
+    public static RetrivedCouponsDTO getDTORetrivedCoupon(Optional<RetrievedCoupons> persons) {
+            return null;
+    }
+
+    public static Iterable<RetrivedCouponsDTO> getDTORetrivedCouponList(Iterable<RetrievedCoupons> persons) {
+            return  null;
+    }
+
+    public static RetrievedCoupons getFromDTORetrivedCoupon(RetrivedCouponsDTO institution) {
+        return null;
+    }
+
+    public static Student getFromDTOStudent(StudentDTO institution) {
+        return null;
+    }
+
+    public static StudentDTO getDTOStudent(Optional<Student> persons) {
+        return null;
+    }
+
+    public static Iterable<StudentDTO> getDTOStudentList(Iterable<Student> persons) {
+        return null;
+    }
 }

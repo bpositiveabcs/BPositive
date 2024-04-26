@@ -11,11 +11,18 @@ import org.apache.logging.log4j.Logger;
 import java.sql.Connection;
 import java.util.List;
 import java.util.Optional;
+import java.util.Properties;
 
 public class DBRetrievedCouponsRepository implements RetrievedCouponsRepository {
     private DBUtils dbUtils;
     private static final Logger logger= LogManager.getLogger();
     private RetrievedCouponsValidator retrievedCouponsValidator;
+
+    public DBRetrievedCouponsRepository(Properties properties, RetrievedCouponsValidator retrievedCouponsValidator) {
+        this.dbUtils = new DBUtils(properties);
+        this.retrievedCouponsValidator = retrievedCouponsValidator;
+    }
+
     private Iterable<RetrievedCoupons> findAllUtilitary(List<String> attributes, List<Object> values)
     {
         Connection con=dbUtils.getConnection();

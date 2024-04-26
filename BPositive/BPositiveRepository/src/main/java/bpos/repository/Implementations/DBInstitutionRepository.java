@@ -13,9 +13,16 @@ import java.sql.PreparedStatement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.Properties;
 
 public class DBInstitutionRepository implements InstitutionRepository {
     private DBUtils dbUtils;
+
+    public DBInstitutionRepository(Properties properties, InstitutionValidator institutionValidator) {
+        this.dbUtils = new DBUtils(properties);
+        this.institutionValidator = institutionValidator;
+    }
+
     private static final Logger logger= LogManager.getLogger();
     private InstitutionValidator institutionValidator;
     private Iterable<Institution> findAllUtilitary(List<String> attributes, List<Object> values)

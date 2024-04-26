@@ -6,6 +6,7 @@ public class Request implements Serializable {
     private RequestType type;
     private Object data;
     private Object data2;
+    private Object data3;
 
     public Object getData2() {
         return data2;
@@ -26,6 +27,9 @@ public class Request implements Serializable {
     }
     public Object data2(){
         return data2;
+    }
+    public Object data3(){
+        return data3;
     }
 
 
@@ -66,6 +70,9 @@ public class Request implements Serializable {
     }
     private void data2(Object data2) {
         this.data2 = data2;
+    }
+    private void data3(Object data3) {
+        this.data3 = data3;
     }
 
     private void type(RequestType type) {
