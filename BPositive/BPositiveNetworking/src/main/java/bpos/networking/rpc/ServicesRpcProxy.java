@@ -1729,7 +1729,7 @@ Request req =new Request.Builder().type(RequestType.FIND_BY_ADDRESS_INSTITUTION)
         DonationDTO addressDTO= DTOUtils.getDTODonation(Optional.of(donation));
         PersonDTO addressDTO1= DTOUtils.getDTOPerson(Optional.of(person));
         EventDTO addressDTO2= DTOUtils.getDTOEvent(Optional.of(event));
-        Request req =new Request.Builder().type(RequestType.DONATION_REGISTER).data(addressDTO,addressDTO1,addressDTO2).build();
+        Request req =new Request.Builder().type(RequestType.donationRegister).data(addressDTO).data(addressDTO1).data3(addressDTO2).build();
         sendRequest(req);
         Response response=readResponse();
         if (response.type()== ResponseType.ERROR){
