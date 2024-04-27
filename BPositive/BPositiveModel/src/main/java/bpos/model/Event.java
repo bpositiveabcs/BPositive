@@ -24,6 +24,10 @@ public class Event extends Entity<Integer>{
         this.center = center;
     }
 
+    public Event() {
+
+    }
+
     public String getEventName() {
         return eventName;
     }

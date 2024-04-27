@@ -14,6 +14,11 @@ public class RetrievedCoupons extends Entity<Integer> {
         this.receivedDate = receivedDate;
         this.expirationDate = expirationDate;
     }
+
+    public RetrievedCoupons() {
+
+    }
+
     public Coupon getCoupon() {
         return coupon;
     }

@@ -11,6 +11,10 @@ public class DonationType extends Entity<Integer>{
         this.waitingInterval = waitingInterval;
     }
 
+    public DonationType() {
+
+    }
+
     public String getName() {
         return name;
     }

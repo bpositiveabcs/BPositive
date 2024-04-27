@@ -8,6 +8,10 @@ public class CouponDTO implements Serializable {
     private String necessaryPoints;
     private String name;
 
+    public CouponDTO() {
+
+    }
+
     public String getId() {
         return id;
     }

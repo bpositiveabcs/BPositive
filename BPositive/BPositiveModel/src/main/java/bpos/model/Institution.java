@@ -11,6 +11,10 @@ public class Institution  extends Entity<Integer>{
         this.address = address;
     }
 
+    public Institution() {
+
+    }
+
     public String getName() {
         return name;
     }

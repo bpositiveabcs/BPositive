@@ -11,7 +11,7 @@ public class InstitutionDTO implements java.io.Serializable{
     public void setId(String id) {
         this.id = id;
     }
-
+    public InstitutionDTO(){}
     public InstitutionDTO(String id, String name, String email, String address) {
         this.id = id;
         this.name = name;

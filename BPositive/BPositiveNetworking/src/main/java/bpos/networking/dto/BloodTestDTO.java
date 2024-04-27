@@ -16,6 +16,10 @@ public class BloodTestDTO implements Serializable {
         this.medicalInfo = medicalInfo;
     }
 
+    public BloodTestDTO() {
+
+    }
+
     public String getId() {
         return id;
     }

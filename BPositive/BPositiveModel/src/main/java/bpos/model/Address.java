@@ -23,6 +23,10 @@ public class Address extends Entity<Integer>{
         this.apartment = apartment;
     }
 
+    public Address() {
+
+    }
+
     public String getCountry() {
         return country;
     }

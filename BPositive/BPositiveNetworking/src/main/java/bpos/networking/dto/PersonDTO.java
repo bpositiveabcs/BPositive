@@ -8,6 +8,9 @@ public class PersonDTO implements java.io.Serializable{
     private String id;
     private LogInfoDTO personLogInfo;
 
+    public PersonDTO() {
+    }
+
     public String getId() {
         return id;
     }

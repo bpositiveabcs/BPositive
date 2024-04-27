@@ -15,6 +15,10 @@ public class Center extends Entity<Integer>{
         this.address = address;
     }
 
+    public Center() {
+
+    }
+
     public String getInstitutionDetails() {
         return institutionDetails;
     }

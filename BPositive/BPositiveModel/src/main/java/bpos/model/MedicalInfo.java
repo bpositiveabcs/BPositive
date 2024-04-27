@@ -21,6 +21,10 @@ public class MedicalInfo extends Entity<Integer> {
         this.medicalHistory = medicalHistory;
     }
 
+    public MedicalInfo() {
+
+    }
+
     public boolean getEligibility() {
         return eligibility;
     }

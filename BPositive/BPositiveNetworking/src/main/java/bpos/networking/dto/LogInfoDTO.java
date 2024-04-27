@@ -12,6 +12,9 @@ public class LogInfoDTO implements java.io.Serializable{
         this.id = id;
     }
 
+    public LogInfoDTO() {
+    }
+
     public LogInfoDTO(String id, String username, String password, String email, String seed) {
         this.id = id;
         this.username = username;

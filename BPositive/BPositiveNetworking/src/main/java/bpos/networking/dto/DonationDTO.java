@@ -10,6 +10,10 @@ public class DonationDTO implements Serializable {
 
     private String points;
 
+    public DonationDTO() {
+
+    }
+
     public String getId() {
         return id;
     }

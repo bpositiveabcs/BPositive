@@ -23,6 +23,9 @@ public class Coupon extends Entity<Integer>{
         this.series = series;
     }
 
+    public Coupon() {
+
+    }
 
 
     public Integer getNecessaryPoints() {

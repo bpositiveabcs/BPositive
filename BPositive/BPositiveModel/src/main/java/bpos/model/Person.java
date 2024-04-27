@@ -11,7 +11,7 @@ public class Person extends Entity<Integer> {
     private List<Donation> donations;//se preiau din baza de date la need
     private List<Event> events;
     Institution institution;
-
+    public Person(){}
     public Person(LogInfo personLogInfo, Integer points, PersonalData personalDate, MedicalInfo medicalInfo, Institution institution) {
         this.personLogInfo = personLogInfo;
         this.points = points;

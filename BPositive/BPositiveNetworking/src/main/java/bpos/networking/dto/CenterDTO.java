@@ -13,7 +13,7 @@ public class CenterDTO implements java.io.Serializable{
     public void setId(String id) {
         this.id = id;
     }
-
+    public CenterDTO(){}
     public CenterDTO(String id, String institutionDetails, LogInfoDTO logInfo, String centerName, String address) {
         this.id = id;
         this.institutionDetails = institutionDetails;

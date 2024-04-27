@@ -22,6 +22,10 @@ public class PersonalData extends Entity<Integer>{
         this.birthDate = birthDate;
     }
 
+    public PersonalData() {
+
+    }
+
     public Address getAddress() {
         return address;
     }

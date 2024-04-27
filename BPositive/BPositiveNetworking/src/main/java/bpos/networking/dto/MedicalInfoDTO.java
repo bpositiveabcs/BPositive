@@ -15,6 +15,9 @@ public class MedicalInfoDTO implements java.io.Serializable{
         this.id = id;
     }
 
+    public MedicalInfoDTO() {
+    }
+
     public MedicalInfoDTO(String id, String eligibility, String bloodType, String rh) {
         this.id = id;
         this.eligibility = eligibility;

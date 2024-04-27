@@ -14,6 +14,10 @@ public class Donation extends Entity<Integer> {
         this.points = points;
     }
 
+    public Donation() {
+
+    }
+
     public DonationType getDonationType() {
         return donationType;
     }

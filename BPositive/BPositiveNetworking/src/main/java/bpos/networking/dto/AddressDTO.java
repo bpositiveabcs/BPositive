@@ -6,6 +6,10 @@ public class AddressDTO implements Serializable {
     private String id;
     private String country;
 
+    public AddressDTO() {
+
+    }
+
     public String getId() {
         return id;
     }

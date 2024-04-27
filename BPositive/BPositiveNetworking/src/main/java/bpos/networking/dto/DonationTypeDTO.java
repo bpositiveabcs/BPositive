@@ -9,6 +9,10 @@ public class DonationTypeDTO implements java.io.Serializable{
         this.waitingInterval = waitingInterval;
     }
 
+    public DonationTypeDTO() {
+
+    }
+
     public String getId() {
         return id;
     }

@@ -8,6 +8,10 @@ public class RetrivedCouponsDTO implements java.io.Serializable{
     private String id;
     private CouponDTO coupon;
 
+    public RetrivedCouponsDTO() {
+
+    }
+
     public String getId() {
         return id;
     }
