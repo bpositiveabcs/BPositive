@@ -24,7 +24,7 @@ dependencies {
     implementation 'org.openjfx:javafx-fxml:17'
 }
 application{
-    mainClass='bpos/client/StartClient'
+    mainClass='bpos.client.StartClient'
 }
 test {
     useJUnitPlatform()
