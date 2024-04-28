@@ -75,7 +75,7 @@ public class DBGetters {
         LocalDateTime receivedDate=resultSet.getTimestamp("preluat_la_data_de_CupoaneRetrieved").toLocalDateTime();
         LocalDateTime expirationDate=resultSet.getTimestamp("expira_la_CupoaneRetrieved").toLocalDateTime();
         Coupon coupon=getCoupon(resultSet);
-        RetrievedCoupons retrievedCoupons=new RetrievedCoupons(coupon,receivedDate,expirationDate);
+        RetrievedCoupons retrievedCoupons=new RetrievedCoupons(coupon, idPersoana, series, receivedDate,expirationDate);
         retrievedCoupons.setId(id);
         return retrievedCoupons;
     }

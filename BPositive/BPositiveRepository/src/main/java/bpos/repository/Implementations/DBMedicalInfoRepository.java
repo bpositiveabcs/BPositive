@@ -69,7 +69,7 @@ public class DBMedicalInfoRepository implements MedicalInfoRepository {
         {
             logger.error(e);
         }
-        return medicalInfos;
+        return medicalInfos.values();
     }
 
     private List<MedicalInfo> setBloodTests(HashMap<Integer, List<MedicalInfo>> medicalInfos) {
@@ -130,26 +130,63 @@ public class DBMedicalInfoRepository implements MedicalInfoRepository {
 
     @Override
     public Optional<MedicalInfo> delete(MedicalInfo entity) {
-        return Optional.empty();
+        if (entity == null) {
+            throw new IllegalArgumentException("entity must not be null");
+
+        }
+        Connection con=dbUtils.getConnection();
+        try(java.sql.PreparedStatement preparedStatement=con.prepareStatement("DELETE FROM InformatiiMedicale WHERE id=?"))
+        {
+            preparedStatement.setInt(1,entity.getId());
+            preparedStatement.executeUpdate();
+            return Optional.empty();
+        }
+        catch (java.sql.SQLException e)
+        {
+            logger.error(e);
+            return Optional.of(entity);
+        }
     }
 
     @Override
     public Optional<MedicalInfo> update(MedicalInfo entity) {
-        return Optional.empty();
+        if(entity==null)
+        {
+            throw new IllegalArgumentException("Entity must not be null");
+        }
+        if(medicalInfoValidator!=null)
+        {
+            medicalInfoValidator.validate(entity);
+        }
+        Connection con=dbUtils.getConnection();
+        try(java.sql.PreparedStatement preparedStatement=con.prepareStatement("UPDATE InformatiiMedicale SET eligibilitateDonare=?,grupaSange=?,rh=? WHERE id=?"))
+        {
+            preparedStatement.setBoolean(1,entity.getEligibility() );
+            preparedStatement.setString(2,entity.getBloodType().toString());
+            preparedStatement.setString(3,entity.getRh().toString());
+            preparedStatement.setInt(4,entity.getId());
+            preparedStatement.executeUpdate();
+            return Optional.empty();
+        }
+        catch (java.sql.SQLException e)
+        {
+            logger.error(e);
+            return Optional.of(entity);
+        }
     }
 
     @Override
     public Iterable<MedicalInfo> findByBloodType(String bloodType) {
-        return null;
+        return findAllUtilitary(Arrays.asList("grupaSange_MedicalInformation"),Arrays.asList(bloodType));
     }
 
     @Override
     public Iterable<MedicalInfo> findByRh(String rh) {
-        return null;
+        return findAllUtilitary(Arrays.asList("rh_MedicalInformation"),Arrays.asList(rh));
     }
 
     @Override
     public Iterable<MedicalInfo> findByBloodTypeAndRh(String bloodType, String rh) {
-        return null;
+        return findAllUtilitary(Arrays.asList("grupaSange_MedicalInformation","rh_MedicalInformation"),Arrays.asList(bloodType,rh));
     }
 }
