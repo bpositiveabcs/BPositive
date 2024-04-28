@@ -87,6 +87,7 @@ public class DBLogInfoRepository implements LogInfoRepository {
             {
                 throw new IllegalArgumentException("Entity must not be null");
             }
+    if(logInfoValidator!=null)
             logInfoValidator.validate(entity);
             Connection con=dbUtils.getConnection();
             try (java.sql.PreparedStatement preparedStatement=con.prepareStatement("INSERT INTO LogInInfo(username,password,email,seed) VALUES (?,?,?,?)"))
@@ -133,6 +134,7 @@ public class DBLogInfoRepository implements LogInfoRepository {
         {
             throw new IllegalArgumentException("Entity must not be null");
         }
+        if(logInfoValidator!=null)
         logInfoValidator.validate(entity);
         Connection con=dbUtils.getConnection();
         try (java.sql.PreparedStatement preparedStatement=con.prepareStatement("UPDATE LogInInfo SET username=?,password=?,email=?,seed=? WHERE id=?"))

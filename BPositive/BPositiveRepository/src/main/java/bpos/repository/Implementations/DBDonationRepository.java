@@ -41,6 +41,10 @@ public class DBDonationRepository implements DonationRepository {
                 }
             }
         }
+        if(values==null)
+        {
+            values=new java.util.ArrayList<>();
+        }
         List<Donation> donations=new java.util.ArrayList<>();
         try (java.sql.PreparedStatement preparedStatement=con.prepareStatement(sql))
         {

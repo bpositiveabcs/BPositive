@@ -21,10 +21,10 @@ public class DBUtils {
         {
 
             logger.traceEntry();
-            String driver=jdbcProps.getProperty("festival.jdbc.driver");
-            String url=jdbcProps.getProperty("festival.jdbc.url");
-            String user=jdbcProps.getProperty("festival.jdbc.user");
-            String pass=jdbcProps.getProperty("festival.jdbc.password");
+            String driver=jdbcProps.getProperty("bpositive.jdbc.driver");
+            String url=jdbcProps.getProperty("bpositive.jdbc.url");
+            String user=jdbcProps.getProperty("bpositive.jdbc.user");
+            String pass=jdbcProps.getProperty("bpositive.jdbc.password");
             try
             {
                 Class.forName(driver);

@@ -92,7 +92,7 @@ public class DBInstitutionRepository implements InstitutionRepository {
             logger.error("Entity must not be null");
             throw new IllegalArgumentException("Entity must not be null");
         }
-        if(institutionValidator==null)
+        if(institutionValidator!=null)
         {
             institutionValidator.validate(entity);
         }

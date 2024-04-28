@@ -27,8 +27,16 @@ public class DBAddressRepository implements AddressRepository {
     {
         Connection con=dbUtils.getConnection();
         List<Address> addresses=new ArrayList<>();
+        if (attributes==null)
+        {
+            attributes=new ArrayList<>();
+        }
+        if(values==null)
+        {
+            values=new ArrayList<>();
+        }
         String sql="SELECT * from View_Adresa";
-        if(attributes!=null)
+        if(attributes!=null && attributes.size()>0)
         {
             sql+=" where ";
             for(int i=0;i<attributes.size();i++)

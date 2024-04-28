@@ -6,11 +6,11 @@ public class BloodTest extends Entity<Integer> {
 
     private String name;
     private String path;
-    private MedicalInfo medicalInfo;
+    private Integer medicalInfo;
 
 
 
-    public BloodTest(String name, String path, MedicalInfo medicalInfo) {
+    public BloodTest(String name, String path, Integer medicalInfo) {
         this.name = name;
         this.path = path;
         this.medicalInfo = medicalInfo;
@@ -50,11 +50,11 @@ public class BloodTest extends Entity<Integer> {
         return Objects.hash(name, path);
     }
 
-    public MedicalInfo getMedicalInfo() {
+    public Integer getMedicalInfo() {
         return medicalInfo;
     }
 
-    public void setMedicalInfo(MedicalInfo medicalInfo) {
+    public void setMedicalInfo(Integer medicalInfo) {
         this.medicalInfo = medicalInfo;
     }
 }

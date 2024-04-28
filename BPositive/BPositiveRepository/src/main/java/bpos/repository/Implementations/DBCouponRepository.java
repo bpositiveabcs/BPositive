@@ -42,6 +42,10 @@ public class DBCouponRepository implements CouponRepository {
             }
         }
         List<Coupon> coupons=new java.util.ArrayList<>();
+        if (values==null)
+        {
+            values=new java.util.ArrayList<>();
+        }
         try (java.sql.PreparedStatement preparedStatement=con.prepareStatement(sql))
         {
             for(int i=0;i<values.size();i++)
@@ -62,7 +66,7 @@ public class DBCouponRepository implements CouponRepository {
             logger.error(e);
             System.out.println("Error finding all elements DB"+ e);
         }
-        return null;
+        return coupons;
     }
     @Override
     public Iterable<Coupon> findByCodeCoupon(String code) {
@@ -105,15 +109,18 @@ public class DBCouponRepository implements CouponRepository {
 
     @Override
     public Optional<Coupon> save(Coupon entity) {
+        if(couponValidator!=null)
         couponValidator.validate(entity);
         Connection con=dbUtils.getConnection();
-        try(PreparedStatement preparedStatement=con.prepareStatement("INSERT INTO Cupon(puncte_necesare,provider,oferta,timp_valabilitate,unavailable_to_claim_from) VALUES (?,?,?,?,?)"))
+        try(PreparedStatement preparedStatement=con.prepareStatement("INSERT INTO Cupon(puncte_necesare,provider,oferta,timp_valabilitate,unavailable_to_claim_from,nume,serieCupon) VALUES (?,?,?,?,?,?,?)",PreparedStatement.RETURN_GENERATED_KEYS))
         {
             preparedStatement.setInt(1,entity.getNecessaryPoints());
             preparedStatement.setString(2,entity.getProvider());
             preparedStatement.setString(3,entity.getOffer());
             preparedStatement.setInt(4,entity.getValidityPeriod());
             preparedStatement.setString(5, String.valueOf(entity.getUnavailableToClaimFrom()));
+            preparedStatement.setString(6,entity.getName());
+            preparedStatement.setString(7,entity.getSeries());
             preparedStatement.executeUpdate();
         }
         catch (SQLException e)

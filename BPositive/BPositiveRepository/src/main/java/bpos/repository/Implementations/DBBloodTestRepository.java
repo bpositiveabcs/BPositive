@@ -72,6 +72,10 @@ public class DBBloodTestRepository implements BloodTestRepository {
                 }
             }
         }
+        if(values==null)
+        {
+            values=new ArrayList<>();
+        }
         List<BloodTest> bloodTests=new ArrayList<>();
 
         try (PreparedStatement preparedStatement=con.prepareStatement(sql))
@@ -114,14 +118,14 @@ public class DBBloodTestRepository implements BloodTestRepository {
         {
             bloodTestValidator.validate(entity);
         }
-        String sql="INSERT INTO Analiza(id, nume, cale, id_informatiimedicale) VALUES(?,?,?,?,?,?)";
+        String sql="INSERT INTO Analiza(id, nume, cale, id_informatiimedicale) VALUES(?,?,?,?)";
         Connection con=dbUtils.getConnection();
         try (PreparedStatement preparedStatement=con.prepareStatement(sql))
         {
             preparedStatement.setInt(1,entity.getId());
             preparedStatement.setString(2,entity.getName());
             preparedStatement.setString(3,entity.getPath());
-            preparedStatement.setInt(4,entity.getMedicalInfo().getId()  );
+            preparedStatement.setInt(4,entity.getMedicalInfo() );
             preparedStatement.executeUpdate();
         }
         catch (SQLException e)
@@ -173,7 +177,7 @@ public class DBBloodTestRepository implements BloodTestRepository {
         {
             preparedStatement.setString(1,entity.getName());
             preparedStatement.setString(2,entity.getPath());
-            preparedStatement.setInt(3,entity.getMedicalInfo().getId());
+            preparedStatement.setInt(3,entity.getMedicalInfo());
             preparedStatement.setInt(4,entity.getId());
             preparedStatement.executeUpdate();
         }
