@@ -18,7 +18,7 @@ public class StartRpcServer {
         // UserRepository userRepo=new UserRepositoryMock();
         Properties serverProps = new Properties();
         try {
-            serverProps.load(StartRpcServer.class.getResourceAsStream("/competitionserver.properties"));
+            serverProps.load(StartRpcServer.class.getClassLoader().getResourceAsStream("server.properties"));
             System.out.println("Server properties set. ");
             serverProps.list(System.out);
         } catch (IOException e) {
@@ -57,7 +57,7 @@ public class StartRpcServer {
         IServiceImpl serviceImpl = new ServerImlp(institutionRepository,logInfoRepository,medicalInfoRepository,personRepository,personalDataRepository,retrievedCouponsRepository,addressRepository,bloodTestRepository,centerRepository,couponRepository,donationRepository,donationTypeRepository,eventRepository,studentRepository);
         int competitionServerPort = defaultPort;
         try{
-            competitionServerPort = Integer.parseInt(serverProps.getProperty("competition.server.port"));
+            competitionServerPort = Integer.parseInt(serverProps.getProperty("server.port"));
         } catch (NumberFormatException nef) {
             System.err.println("Wrong  Port Number" + nef.getMessage());
             System.err.println("Using default port " + defaultPort);

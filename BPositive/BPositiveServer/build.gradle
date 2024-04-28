@@ -11,16 +11,17 @@ repositories {
 }
 
 dependencies {
-    implementation project(path: ':BPositiveServices')
-    implementation project(path: ':BPositiveModel')
-    implementation project(path: ':BPositiveRepository')
-    implementation project(path: ':BPositiveNetworking')
+    implementation project(':BPositiveServices')
+    implementation project(':BPositiveModel')
+    implementation project(':BPositiveRepository')
+    implementation project(':BPositiveNetworking')
     testImplementation platform('org.junit:junit-bom:5.9.1')
     testImplementation 'org.junit.jupiter:junit-jupiter'
 }
+
 application{
     // mainClass='StartObjectServer'
-    mainClass='StartRpcServer'
+    mainClass='bpos.server.StartRpcServer'
 }
 
 test {
