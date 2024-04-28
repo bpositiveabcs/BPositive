@@ -1741,12 +1741,12 @@ Request req =new Request.Builder().type(RequestType.FIND_BY_ADDRESS_INSTITUTION)
     // to do
     private void initializeConnection() throws ServicesExceptions {
         try {
-            connection=new Socket(host,port);
-            output=new ObjectOutputStream(connection.getOutputStream());
-            output.flush();
-            input=new ObjectInputStream(connection.getInputStream());
-            finished=false;
-            startReader();
+            this.connection=new Socket(this.host,this.port);
+            this.output=new ObjectOutputStream(connection.getOutputStream());
+            this.output.flush();
+            this.input=new ObjectInputStream(connection.getInputStream());
+            this.finished=false;
+            this.startReader();
         } catch (IOException e) {
             e.printStackTrace();
         }

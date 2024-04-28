@@ -1,8 +1,12 @@
 package bpos.client;
 
+import bpos.client.controller.MainController;
 import bpos.networking.rpc.ServicesRpcProxy;
 import bpos.services.IServiceImpl;
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -37,5 +41,34 @@ public class StartClient extends Application {
         System.out.println("Using server IP " + serverIP);
         System.out.println("Using server port " + serverPort);
         IServiceImpl server = new ServicesRpcProxy(serverIP, serverPort);
+
+
+//        FXMLLoader loader = new FXMLLoader(getClass().getResource("/main-admin.fxml"));
+//        Parent root = loader.load();
+//        MainController controller = loader.getController();
+//        Scene scene = new Scene(root);
+//        primaryStage.setScene(scene);
+//        controller.initialize();
+//
+//        primaryStage.show();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/main-admin.fxml"));
+        Parent root = loader.load();
+        MainController controller = loader.getController();
+
+        // Seteaza serverul inainte de a apela initialize()
+        controller.setServer(server);
+
+
+        // Set up the primary stage
+        primaryStage.setTitle("Your Application Title");
+        primaryStage.setScene(new Scene(root, 800, 600));
+        primaryStage.show();
+
+
     }
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+
 }
