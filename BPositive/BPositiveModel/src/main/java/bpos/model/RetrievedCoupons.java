@@ -78,5 +78,17 @@ public class RetrievedCoupons extends Entity<Integer> {
     public void setSeries(String series) {
         this.series = series;
     }
+
+    @Override
+    public String toString() {
+        return "RetrievedCoupons{" +
+                "coupon=" + coupon +
+                ", id_persoana=" + id_persoana +
+                ", series='" + series + '\'' +
+                ", receivedDate=" + receivedDate +
+                ", expirationDate=" + expirationDate +
+                ", id=" + id +
+                "} " + super.toString();
+    }
 }
 

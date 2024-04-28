@@ -65,6 +65,20 @@ public class Person extends Entity<Integer> {
         return institution;
     }
 
+    @Override
+    public String toString() {
+        return "Person{" +
+                "personLogInfo=" + personLogInfo +
+                ", points=" + points +
+                ", personalDate=" + personalDate +
+                ", medicalInfo=" + medicalInfo +
+                ", donations=" + donations +
+                ", events=" + events +
+                ", institution=" + institution +
+                ", id=" + id +
+                "} " + super.toString();
+    }
+
     public void setInstitution(Institution institution) {
         this.institution = institution;
     }

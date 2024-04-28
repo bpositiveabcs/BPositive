@@ -8,7 +8,15 @@ public class BloodTest extends Entity<Integer> {
     private String path;
     private Integer medicalInfo;
 
-
+    @Override
+    public String toString() {
+        return "BloodTest{" +
+                "name='" + name + '\'' +
+                ", path='" + path + '\'' +
+                ", medicalInfo=" + medicalInfo +
+                ", id=" + id +
+                "} " + super.toString();
+    }
 
     public BloodTest(String name, String path, Integer medicalInfo) {
         this.name = name;

@@ -92,6 +92,21 @@ public class Address extends Entity<Integer>{
     }
 
     @Override
+    public String toString() {
+        return "Address{" +
+                "country='" + country + '\'' +
+                ", city='" + city + '\'' +
+                ", county='" + county + '\'' +
+                ", street='" + street + '\'' +
+                ", numberStreet='" + numberStreet + '\'' +
+                ", block='" + block + '\'' +
+                ", floor=" + floor +
+                ", apartment='" + apartment + '\'' +
+                ", id=" + id +
+                "} " + super.toString();
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Address address)) return false;

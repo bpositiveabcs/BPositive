@@ -81,4 +81,17 @@ public class Student extends Person{
     public void setDepartment(String department) {
         this.department = department;
     }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "year=" + year +
+                ", group='" + group + '\'' +
+                ", faculty='" + faculty + '\'' +
+                ", department='" + department + '\'' +
+                ", university=" + university +
+                ", institution=" + institution +
+                ", id=" + id +
+                "} " + super.toString();
+    }
 }

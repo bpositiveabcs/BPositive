@@ -35,6 +35,16 @@ public class Institution  extends Entity<Integer>{
         return address;
     }
 
+    @Override
+    public String toString() {
+        return "Institution{" +
+                "name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", address='" + address + '\'' +
+                ", id=" + id +
+                "} " + super.toString();
+    }
+
     public void setAddress(String address) {
         this.address = address;
     }

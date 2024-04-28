@@ -96,10 +96,10 @@ public class DBRetrievedCouponsRepository implements RetrievedCouponsRepository 
             retrievedCouponsValidator.validate(entity);
         }
         Connection connection=dbUtils.getConnection();
-        String sql="INSERT INTO CupoaneRetrieved(id_persoana,id_cupon,preluat_la_data_de,expira_la,series_unique) VALUES (?,?,?,?,?,?)";
+        String sql="INSERT INTO CupoaneRetrieved(id_persoana, id_cupon, preluat_la_data_de, expira_la, series_unique) VALUES (?,?,?,?,?)";
             try(java.sql.PreparedStatement preparedStatement=connection.prepareStatement(sql,java.sql.Statement.RETURN_GENERATED_KEYS))
             {
-                preparedStatement.setInt(1,entity.getId());
+                preparedStatement.setInt(1,entity.getId_persoana());
                 preparedStatement.setInt(2,entity.getCoupon().getId());
                 preparedStatement.setString(3,entity.getReceivedDate().toString());
                 preparedStatement.setString(4,entity.getExpirationDate().toString());

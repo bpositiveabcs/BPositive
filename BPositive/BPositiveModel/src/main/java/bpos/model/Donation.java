@@ -8,6 +8,14 @@ public class Donation extends Entity<Integer> {
 
     private Integer points;
 
+    @Override
+    public String toString() {
+        return "Donation{" +
+                "donationType=" + donationType +
+                ", points=" + points +
+                ", id=" + id +
+                "} " + super.toString();
+    }
 
     public Donation(DonationType donationType, Integer points) {
         this.donationType = donationType;

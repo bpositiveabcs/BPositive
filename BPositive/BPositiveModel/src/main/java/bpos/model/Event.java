@@ -101,6 +101,21 @@ public class Event extends Entity<Integer>{
         return center;
     }
 
+    @Override
+    public String toString() {
+        return "Event{" +
+                "eventName='" + eventName + '\'' +
+                ", eventAnnouncementDate=" + eventAnnouncementDate +
+                ", eventStartDate=" + eventStartDate +
+                ", eventEndDate=" + eventEndDate +
+                ", maxParticipants=" + maxParticipants +
+                ", eventDescription='" + eventDescription + '\'' +
+                ", eventRequirements='" + eventRequirements + '\'' +
+                ", center=" + center +
+                ", id=" + id +
+                "} " + super.toString();
+    }
+
     public void setCenter(Center center) {
         this.center = center;
     }

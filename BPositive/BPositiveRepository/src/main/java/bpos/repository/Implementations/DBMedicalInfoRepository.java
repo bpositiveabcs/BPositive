@@ -49,10 +49,18 @@ public class DBMedicalInfoRepository implements MedicalInfoRepository {
             {
                 while(resultSet.next())
                 {
-                    MedicalInfo medicalInfo= DBGetters.getMedicalInfo(resultSet);
 
-                    medicalInfo=addBloodTests(medicalInfo,medicalInfos);
-                    medicalInfos.put(medicalInfo.getId(),medicalInfo);
+                    MedicalInfo medicalInfo= DBGetters.getMedicalInfo(resultSet);
+                    if(medicalInfos.containsKey(medicalInfo.getId()))
+                    {
+                        medicalInfo=addBloodTests(medicalInfo,medicalInfos);
+                        medicalInfos.put(medicalInfo.getId(),medicalInfo);
+                    }
+                    else
+                    {
+                        medicalInfos.put(medicalInfo.getId(),medicalInfo);
+                    }
+
 
                 }
 

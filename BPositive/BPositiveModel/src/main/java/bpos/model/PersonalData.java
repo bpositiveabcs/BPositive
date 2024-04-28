@@ -91,6 +91,20 @@ public class PersonalData extends Entity<Integer>{
     }
 
     @Override
+    public String toString() {
+        return "PersonalData{" +
+                "address=" + address +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", cnp='" + cnp + '\'' +
+                ", sex='" + sex + '\'' +
+                ", birthDate=" + birthDate +
+                ", id=" + id +
+                "} " + super.toString();
+    }
+
+    @Override
     public int hashCode() {
         return Objects.hash(super.hashCode(), getAddress(), getPhoneNumber(), getFirstName(), getLastName(), getCnp(), getSex(), getBirthDate());
     }

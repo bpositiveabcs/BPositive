@@ -13,6 +13,20 @@ public class Coupon extends Entity<Integer>{
     private Integer validityPeriod;
     private String series;
 
+    @Override
+    public String toString() {
+        return "Coupon{" +
+                "necessaryPoints=" + necessaryPoints +
+                ", name='" + name + '\'' +
+                ", provider='" + provider + '\'' +
+                ", offer='" + offer + '\'' +
+                ", unavailableToClaimFrom=" + unavailableToClaimFrom +
+                ", validityPeriod=" + validityPeriod +
+                ", series='" + series + '\'' +
+                ", id=" + id +
+                "} " + super.toString();
+    }
+
     public Coupon(Integer necessaryPoints, String name, String provider, String offer, LocalDateTime unavailableToClaimFrom, Integer validityPeriod, String series) {
         this.necessaryPoints = necessaryPoints;
         this.name = name;

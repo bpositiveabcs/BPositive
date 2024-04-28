@@ -69,6 +69,17 @@ public class MedicalInfo extends Entity<Integer> {
     }
 
     @Override
+    public String toString() {
+        return "MedicalInfo{" +
+                "eligibility=" + eligibility +
+                ", bloodType=" + bloodType +
+                ", rh=" + rh +
+                ", medicalHistory=" + medicalHistory +
+                ", id=" + id +
+                "} " + super.toString();
+    }
+
+    @Override
     public int hashCode() {
         return Objects.hash(eligibility, bloodType, rh, medicalHistory);
     }
