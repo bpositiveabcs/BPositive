@@ -11,7 +11,7 @@ public class RpcConcurrentServer extends AbsConcurrentServer {
     public RpcConcurrentServer(int port, IServiceImpl chatServer) {
         super(port);
         this.chatServer = chatServer;
-        System.out.println("Chat- ChatRpcConcurrentServer");
+        System.out.println("RpcConcurrentServer");
     }
 
     @Override

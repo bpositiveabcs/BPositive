@@ -21,8 +21,8 @@ public class DBUtils {
         {
 
             logger.traceEntry();
-            String driver=jdbcProps.getProperty("bpositive.jdbc.driver");
-            String url=jdbcProps.getProperty("bpositive.jdbc.url");
+            String driver=jdbcProps.getProperty("jdbc.driver");
+            String url=jdbcProps.getProperty("jdbc.url");
             String user=jdbcProps.getProperty("bpositive.jdbc.user");
             String pass=jdbcProps.getProperty("bpositive.jdbc.password");
             try
@@ -40,7 +40,7 @@ public class DBUtils {
             Connection connection=null;
             try
             {
-                if (user!=null & pass!=null)
+                if (user!=null && pass!=null)
                 {
                     connection= DriverManager.getConnection(url,user,pass);
                 }
