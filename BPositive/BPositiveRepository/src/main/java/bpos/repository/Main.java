@@ -68,7 +68,7 @@ public class Main {
         //testLogInInfo(dbLogInfoRepository); //id=3
         //testAddress(dbAddressRepository);
       //  dbCenterRepository.findAll().forEach(s -> System.out.println(s)    );
-        LogInfo logInfo= dbLogInfoRepository.findByEmail("admin");
+    //    LogInfo logInfo= dbLogInfoRepository.findByEmail("admin");
    //     dbCenterRepository.save(new Center("aa",logInfo,"aaa","aaa"));
 //        dbInstitutionRepository1.findAll().forEach(s -> System.out.println(s)    );
 //        dbInstitutionRepository1.save(new Institution("name","details","address"));
@@ -107,7 +107,7 @@ public class Main {
 //        personalData.setId(4);
 //        dbPersonalDataRepository.save(personalData);
 //        dbPersonalDataRepository.findAll().forEach(s -> System.out.println(s)    );
-        Coupon coupon=dbCouponRepository.findOne(1).get();
+//        Coupon coupon=dbCouponRepository.findOne(1).get();
 //cupon id 1
         //persoana id 4
         LogInfo logInfo1= dbLogInfoRepository.findByEmail("admin");
@@ -121,7 +121,7 @@ public class Main {
       //  RetrievedCoupons retrievedCoupons=new RetrievedCoupons(coupon,person.getId(),"XXA",LocalDateTime.now(),LocalDateTime.now());
     //    dbRetrievedCouponsRepository.save(retrievedCoupons);
         dbRetrievedCouponsRepository.findAll().forEach(s -> System.out.println(s));
-        
+        dbPersonRepository.findAll().forEach(s -> System.out.println(s));
 
     }
 }

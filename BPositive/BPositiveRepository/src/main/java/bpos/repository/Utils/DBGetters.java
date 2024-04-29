@@ -137,8 +137,20 @@ public class DBGetters {
         LogInfo logInfo=getLogInfo(resultSet);
         Integer points=resultSet.getInt("puncte_Person");
         PersonalData personalData=getPersonalData(resultSet);
-        Institution institution=getInstitution(resultSet);
-        MedicalInfo medicalInfo=getMedicalInfo(resultSet);
+        Integer id_medicalInformation=resultSet.getInt("id_MedicalInformation");
+        int medicalInfoId = resultSet.getInt("id_MedicalInformation");
+        MedicalInfo medicalInfo=null;
+
+        if (!resultSet.wasNull()) { // Check if the last column read had a value of SQL NULL.
+            medicalInfo = getMedicalInfo(resultSet);
+        }
+        Integer id_institutie=resultSet.getInt("id_Institutie");
+        Institution institution=null;
+
+        if(resultSet.wasNull())
+        {
+            institution=getInstitution(resultSet);
+        }
         Person person=new Person(logInfo,points,personalData,medicalInfo,institution);
         person.setId(id);
         return person;
