@@ -57,7 +57,7 @@ public class StartClient extends Application {
 //        Parent root = loader.load();
 //        MainController controller = loader.getController();
 //
-//        // Setează serverul înainte de a apela initialize()
+//        // Seteaza serverul înainte de a apela initialize()
 //        controller.setServer(server);
 //
 //
