@@ -10,7 +10,6 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$/BPositive" />
-            <option value="$PROJECT_DIR$/BPositive/BPositiveModel" />
           </set>
         </option>
       </GradleProjectSettings>

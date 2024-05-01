@@ -1,4 +1,4 @@
-package bpos.model;
+package bpos.Domain;
 
 import java.io.Serializable;
 import java.util.Objects;

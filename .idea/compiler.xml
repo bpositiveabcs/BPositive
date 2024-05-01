@@ -3,9 +3,6 @@
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel>
       <module name="BPositive" target="17" />
-      <module name="BPositive.BPositiveModel" target="17" />
-      <module name="BPositive.BPositiveModel.main" target="17" />
-      <module name="BPositive.BPositiveModel.test" target="17" />
       <module name="BPositive.main" target="17" />
       <module name="BPositive.test" target="17" />
     </bytecodeTargetLevel>
