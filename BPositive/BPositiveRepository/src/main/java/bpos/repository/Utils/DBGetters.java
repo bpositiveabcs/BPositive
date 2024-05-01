@@ -107,7 +107,7 @@ public class DBGetters {
         return logInfo;
     }
 
-    public static Center getCenter(ResultSet resultSet) throws SQLException {
+    protected static Center getCenter(ResultSet resultSet) throws SQLException {
         Integer id=resultSet.getInt("id_Centru");
         String nume=resultSet.getString("nume_Centru");
         String informatii=resultSet.getString("informatii_Centru");
