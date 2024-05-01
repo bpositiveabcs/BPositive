@@ -1,6 +1,5 @@
 package bpos.client;
 
-import bpos.client.controller.LogInController;
 import bpos.client.controller.MainController;
 import bpos.networking.rpc.ServicesRpcProxy;
 import bpos.services.IServiceImpl;
@@ -52,32 +51,18 @@ public class StartClient extends Application {
 //        controller.initialize();
 //
 //        primaryStage.show();
-
-//        FXMLLoader loader = new FXMLLoader(getClass().getResource("/main-admin.fxml"));
-//        Parent root = loader.load();
-//        MainController controller = loader.getController();
-//
-//        // Setează serverul înainte de a apela initialize()
-//        controller.setServer(server);
-//
-//
-//        // Set up the primary stage
-//        primaryStage.setTitle("Your Application Title");
-//        primaryStage.setScene(new Scene(root, 800, 600));
-//        primaryStage.show();
-
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/login-screen.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/main-admin.fxml"));
         Parent root = loader.load();
-        LogInController controller = loader.getController();
-        controller.setProperties(server);
-        Scene scene = new Scene(root);
-        primaryStage.setScene(scene);
-        primaryStage.setTitle("Login");
+        MainController controller = loader.getController();
+
+        // Seteaza serverul inainte de a apela initialize()
+        controller.setServer(server);
+
+
+        // Set up the primary stage
+        primaryStage.setTitle("Your Application Title");
+        primaryStage.setScene(new Scene(root, 800, 600));
         primaryStage.show();
-
-
-
 
 
     }
