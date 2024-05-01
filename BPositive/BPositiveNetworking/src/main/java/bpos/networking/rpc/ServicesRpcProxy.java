@@ -27,11 +27,11 @@ public class ServicesRpcProxy implements IServiceImpl {
 
     private BlockingQueue<Response> qresponses;
     private volatile boolean finished;
-    public ServicesRpcProxy(String host, int port) {
+    public ServicesRpcProxy(String host, int port) throws ServicesExceptions {
         this.host = host;
         this.port = port;
-
         qresponses=new LinkedBlockingQueue<Response>();
+        initializeConnection();
     }
     @Override
     public Optional<Address> findOneAddress(Integer integer) throws ServicesExceptions {
@@ -1662,7 +1662,6 @@ Request req =new Request.Builder().type(RequestType.FIND_BY_ADDRESS_INSTITUTION)
 
     @Override
     public Optional<Person> login(LogInfo logInfo, IObserver observer) throws ServicesExceptions {
-        initializeConnection();
         LogInfoDTO addressDTO= DTOUtils.getDTOLogInfo(Optional.of(logInfo));
         Request req =new Request.Builder().type(RequestType.LOGIN_PERSON).data(addressDTO).build();
         sendRequest(req);
@@ -1680,7 +1679,6 @@ Request req =new Request.Builder().type(RequestType.FIND_BY_ADDRESS_INSTITUTION)
 
     @Override
     public Optional<Center> loginCenter(LogInfo logInfo, IObserver observer) throws ServicesExceptions {
-        initializeConnection();
         LogInfoDTO addressDTO= DTOUtils.getDTOLogInfo(Optional.of(logInfo));
         Request req =new Request.Builder().type(RequestType.LOGIN_CENTER).data(addressDTO).build();
         sendRequest(req);

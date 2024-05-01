@@ -423,8 +423,8 @@ private DBEventRepository dbEvent;
             throw new ServicesExceptions("Username does not exist");
         }
         Person person = dbPerson.findByUsername(logInfo.getUsername());
-        Person person1=dbPerson.findByEmail(logInfo.getEmail());
-        if(person!=null && person.equals(person1)){
+        //Person person1=dbPerson.findByEmail(logInfo.getEmail());
+        if(person!=null /*&& person.equals(person1)*/){
             if(loggedClients.get(person.getId())!=null){
                 throw new ServicesExceptions("User already logged in.");
             }
