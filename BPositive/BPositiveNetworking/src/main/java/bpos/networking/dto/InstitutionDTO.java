@@ -1,24 +1,7 @@
 package bpos.networking.dto;
 
 public class InstitutionDTO implements java.io.Serializable{
-    private String id;
     private String name;
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public InstitutionDTO(String id, String name, String email, String address) {
-        this.id = id;
-        this.name = name;
-        this.email = email;
-        this.address = address;
-    }
-
     private String email;
     private String address;
 

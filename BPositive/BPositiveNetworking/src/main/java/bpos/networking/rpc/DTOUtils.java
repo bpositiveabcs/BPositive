@@ -3,15 +3,11 @@ package bpos.networking.rpc;
 import bpos.model.*;
 import bpos.networking.dto.*;
 
-import java.util.Objects;
 import java.util.Optional;
 
 public class DTOUtils {
     public static Person getFromDTOPerson(PersonDTO user) {
-        if(user==null)
-            return null;
-        if(Objects.equals(user.getId(), "")){
-        }
+        return null;
     }
 
     public static LogInfo getFromDTOLogInfo(LogInfoDTO user) {

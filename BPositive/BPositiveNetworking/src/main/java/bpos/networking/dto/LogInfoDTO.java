@@ -1,25 +1,7 @@
 package bpos.networking.dto;
 
 public class LogInfoDTO implements java.io.Serializable{
-    private String id;
     private String username;
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public LogInfoDTO(String id, String username, String password, String email, String seed) {
-        this.id = id;
-        this.username = username;
-        this.password = password;
-        this.email = email;
-        this.seed = seed;
-    }
-
     private String password;
     private String email;
     private String seed;

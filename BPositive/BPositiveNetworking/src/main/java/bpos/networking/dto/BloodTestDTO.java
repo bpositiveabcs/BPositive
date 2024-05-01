@@ -5,25 +5,8 @@ import bpos.model.MedicalInfo;
 import java.io.Serializable;
 
 public class BloodTestDTO implements Serializable {
-    private String id;
     private String name;
     private String path;
-
-    public BloodTestDTO(String id, String name, String path, MedicalInfoDTO medicalInfo) {
-        this.id = id;
-        this.name = name;
-        this.path = path;
-        this.medicalInfo = medicalInfo;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
     private MedicalInfoDTO medicalInfo;
 
     public BloodTestDTO(String name, String path, MedicalInfoDTO medicalInfo) {

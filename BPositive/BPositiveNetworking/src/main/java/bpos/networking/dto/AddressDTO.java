@@ -3,29 +3,7 @@ package bpos.networking.dto;
 import java.io.Serializable;
 
 public class AddressDTO implements Serializable {
-    private String id;
     private String country;
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public AddressDTO(String id, String country, String city, String county, String street, String numberStreet, String block, String floor, String apartment) {
-        this.id = id;
-        this.country = country;
-        this.city = city;
-        this.county = county;
-        this.street = street;
-        this.numberStreet = numberStreet;
-        this.block = block;
-        this.floor = floor;
-        this.apartment = apartment;
-    }
-
     private String city;
     private String county;
     private String street;

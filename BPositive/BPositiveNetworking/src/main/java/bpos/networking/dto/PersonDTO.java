@@ -5,31 +5,12 @@ import bpos.model.*;
 import java.util.List;
 
 public class PersonDTO implements java.io.Serializable{
-    private String id;
     private LogInfoDTO personLogInfo;
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
     private String points;
     private PersonalDataDTO personalDate;
     private MedicalInfoDTO medicalInfo; //se preiau din baza de date la need
 
     InstitutionDTO institution;
-
-    public PersonDTO(String id, LogInfoDTO personLogInfo, String points, PersonalDataDTO personalDate, MedicalInfoDTO medicalInfo, InstitutionDTO institution) {
-        this.id = id;
-        this.personLogInfo = personLogInfo;
-        this.points = points;
-        this.personalDate = personalDate;
-        this.medicalInfo = medicalInfo;
-        this.institution = institution;
-    }
 
     public PersonDTO(LogInfoDTO personLogInfo, String points, PersonalDataDTO personalDate, MedicalInfoDTO medicalInfo, InstitutionDTO institution) {
         this.personLogInfo = personLogInfo;

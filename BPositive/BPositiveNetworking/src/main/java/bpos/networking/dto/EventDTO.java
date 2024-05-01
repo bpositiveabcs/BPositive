@@ -5,30 +5,8 @@ import bpos.model.Center;
 import java.time.LocalDateTime;
 
 public class EventDTO implements java.io.Serializable{
-    private String id;
     private String eventName;
     private String eventAnnouncementDate;
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public EventDTO(String id, String eventName, String eventAnnouncementDate, String eventStartDate, String eventEndDate, String maxParticipants, String eventDescription, String eventRequirements, CenterDTO center) {
-        this.id = id;
-        this.eventName = eventName;
-        this.eventAnnouncementDate = eventAnnouncementDate;
-        this.eventStartDate = eventStartDate;
-        this.eventEndDate = eventEndDate;
-        this.maxParticipants = maxParticipants;
-        this.eventDescription = eventDescription;
-        this.eventRequirements = eventRequirements;
-        this.center = center;
-    }
-
     private String eventStartDate;
     private String eventEndDate;
     private String maxParticipants;
