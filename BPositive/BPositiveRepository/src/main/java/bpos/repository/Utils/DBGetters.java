@@ -48,7 +48,7 @@ public class DBGetters {
          String nume=resultSet.getString("nume_DatePersonale");
          String prenume=resultSet.getString("prenume_DatePersonale");
          LocalDate dataNasterii= LocalDate.parse(resultSet.getString("data_nastere_DatePersonale"));
-         String cnp=resultSet.getString("cnp_DatePersonale");
+         String cnp=resultSet.getString("cnp_DatePerson");
          String sex=resultSet.getString("sex_DatePersonale");
          Address address=getAddress(resultSet);
          String telefon=resultSet.getString("telefon_DatePersonale");
