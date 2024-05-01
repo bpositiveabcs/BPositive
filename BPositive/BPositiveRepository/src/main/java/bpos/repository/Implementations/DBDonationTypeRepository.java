@@ -36,10 +36,6 @@ public class DBDonationTypeRepository implements DonationTypeRepository {
             }
         }
         List<DonationType> donationTypes=new java.util.ArrayList<>();
-        if(values==null)
-        {
-            values=new java.util.ArrayList<>();
-        }
         try (java.sql.PreparedStatement preparedStatement=connection.prepareStatement(sql))
         {
             for(int i=0;i<values.size();i++)
@@ -77,32 +73,7 @@ public class DBDonationTypeRepository implements DonationTypeRepository {
 
     @Override
     public Optional<DonationType> save(DonationType entity) {
-        if(donationTypeValidator!=null)
-        {
-           donationTypeValidator.validate(entity);
-        }
-        Connection connection=dbUtils.getConnection();
-        String sql="INSERT INTO TipDonatie (nume,interval_asteptare) VALUES (?,?)";
-        try(java.sql.PreparedStatement preparedStatement=connection.prepareStatement(sql,java.sql.Statement.RETURN_GENERATED_KEYS))
-        {
-            preparedStatement.setString(1,entity.getName());
-            preparedStatement.setInt(2,entity.getWaitingInterval());
-            preparedStatement.executeUpdate();
-            try(java.sql.ResultSet resultSet=preparedStatement.getGeneratedKeys())
-            {
-                if(resultSet.next())
-                {
-                    entity.setId(resultSet.getInt(1));
-                }
-            }
-        }
-        catch (java.sql.SQLException e)
-        {
-            logger.error(e);
-            System.out.println("Error saving element DB"+ e);
-        }
-        return Optional.of(entity);
-
+        return Optional.empty();
     }
 
     @Override

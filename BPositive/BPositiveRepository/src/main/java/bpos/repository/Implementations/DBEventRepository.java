@@ -40,10 +40,6 @@ public class DBEventRepository implements EventRepository {
                 }
             }
         }
-        if(values==null)
-        {
-            values=new java.util.ArrayList<>();
-        }
         List<Event> events=new java.util.ArrayList<>();
         try (java.sql.PreparedStatement preparedStatement=con.prepareStatement(sql))
         {
@@ -134,15 +130,15 @@ public class DBEventRepository implements EventRepository {
         {
             eventValidator.validate(entity);
         }
-        try (java.sql.PreparedStatement preparedStatement=con.prepareStatement("INSERT INTO Eveniment(nume,data_incepere,data_anunt,data_sfarsit,max_participanti,cerinte,descriere,id_Centru) VALUES (?,?,?,?,?,?,?,?)",java.sql.Statement.RETURN_GENERATED_KEYS))
+        try (java.sql.PreparedStatement preparedStatement=con.prepareStatement("INSERT INTO Eveniment(nume,data_incepere,data_sfarsit,data_sfarsit,max_participanti,descriere,id_Centru) VALUES (?,?,?,?,?,?,?)",java.sql.Statement.RETURN_GENERATED_KEYS))
         {
             preparedStatement.setString(1,entity.getEventName());
             preparedStatement.setString(2,entity.getEventStartDate().toString());
-            preparedStatement.setString(4,entity.getEventEndDate().toString());
-            preparedStatement.setString(3,entity.getEventAnnouncementDate().toString());
+            preparedStatement.setString(3,entity.getEventEndDate().toString());
+            preparedStatement.setString(4,entity.getEventAnnouncementDate().toString());
             preparedStatement.setInt(5,entity.getMaxParticipants());
-            preparedStatement.setString(7,entity.getEventDescription());
-            preparedStatement.setString(6,entity.getEventRequirements());
+            preparedStatement.setString(6,entity.getEventDescription());
+            preparedStatement.setString(7,entity.getEventRequirements());
             preparedStatement.setInt(8,entity.getCenter().getId());
             preparedStatement.executeUpdate();
             try(java.sql.ResultSet rs=preparedStatement.getGeneratedKeys())

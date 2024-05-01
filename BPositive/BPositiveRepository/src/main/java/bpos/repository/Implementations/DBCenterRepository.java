@@ -27,10 +27,6 @@ public class DBCenterRepository implements CenterRepository {
         Connection con=dbUtils.getConnection();
         List<Center> centers=new java.util.ArrayList<>();
         String sql="SELECT * from View_Centru";
-        if(values==null)
-        {
-            values=List.of();
-        }
         if(attributes!=null)
         {
             sql+=" where ";
@@ -112,7 +108,7 @@ public class DBCenterRepository implements CenterRepository {
         }
         int result=0;
         Connection con=dbUtils.getConnection();
-        try (PreparedStatement preparedStatement=con.prepareStatement("INSERT INTO Centru(nume,informatii,adresa,credentiale_logare) VALUES (?,?,?,?)",PreparedStatement.RETURN_GENERATED_KEYS))
+        try (PreparedStatement preparedStatement=con.prepareStatement("INSERT INTO Centru(nume,informatii,adresa,credentiale_logare) VALUES (?,?,?,?,?)",PreparedStatement.RETURN_GENERATED_KEYS))
         {
             preparedStatement.setString(1,entity.getCenterName());
             preparedStatement.setString(2,entity.getInstitutionDetails());

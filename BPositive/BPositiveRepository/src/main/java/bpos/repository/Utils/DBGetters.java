@@ -47,7 +47,7 @@ public class DBGetters {
          Integer id=resultSet.getInt("id_DatePersonale");
          String nume=resultSet.getString("nume_DatePersonale");
          String prenume=resultSet.getString("prenume_DatePersonale");
-         LocalDate dataNasterii= LocalDate.parse(resultSet.getString("data_nastere_DatePersonale"));
+         LocalDate dataNasterii=resultSet.getDate("dataNasterii_DatePersonale").toLocalDate();
          String cnp=resultSet.getString("CNP_DatePersonale");
          String sex=resultSet.getString("sex_DatePersonale");
          Address address=getAddress(resultSet);
@@ -64,7 +64,7 @@ public class DBGetters {
         int puncte_necesare=resultSet.getInt("puncte_necesare_Cupon");
         String serie=resultSet.getString("serieCupon_Cupon");
         int perioada_valabilitate=resultSet.getInt("timp_valabilitate_Cupon");
-        LocalDateTime indisponibil_de_la= LocalDateTime.parse(resultSet.getString("unavailable_to_claim_from_Cupon"));
+        LocalDateTime indisponibil_de_la=resultSet.getTimestamp("unavailable_to_claim_from_Cupon").toLocalDateTime();
         Coupon coupon=new Coupon(puncte_necesare,nume,provider,oferta,indisponibil_de_la,perioada_valabilitate,serie);
         coupon.setId(id);
         return coupon;
@@ -74,8 +74,6 @@ public class DBGetters {
         Integer id=resultSet.getInt("id_CupoaneRetrieved");
         LocalDateTime receivedDate=resultSet.getTimestamp("preluat_la_data_de_CupoaneRetrieved").toLocalDateTime();
         LocalDateTime expirationDate=resultSet.getTimestamp("expira_la_CupoaneRetrieved").toLocalDateTime();
-        int idPersoana=resultSet.getInt("id_persoana_CupoaneRetrieved");
-        String series=resultSet.getString("series_unique_CupoaneRetrieved");
         Coupon coupon=getCoupon(resultSet);
         RetrievedCoupons retrievedCoupons=new RetrievedCoupons(coupon, idPersoana, series, receivedDate,expirationDate);
         retrievedCoupons.setId(id);
@@ -85,8 +83,8 @@ public class DBGetters {
         Integer id=resultSet.getInt("id_Analiza");
         String nume=resultSet.getString("nume_Analiza");
         String calerator=resultSet.getString("cale_Analiza");
-        int idMedicalInfo=resultSet.getInt("id_informatiimedicale");
-        BloodTest bloodTest=new BloodTest(nume,calerator, idMedicalInfo);
+        MedicalInfo medicalInfo=getMedicalInfo(resultSet);
+        BloodTest bloodTest=new BloodTest(nume,calerator, medicalInfo);
         bloodTest.setId(id);
         return bloodTest;
     }

@@ -38,7 +38,7 @@ public class DBMedicalInfoRepository implements MedicalInfoRepository {
                 }
             }
         }
-        HashMap<Integer,MedicalInfo> medicalInfos=new HashMap<>();
+        HashMap<Integer,List<MedicalInfo>> medicalInfos=new HashMap<>();
         try (java.sql.PreparedStatement preparedStatement=con.prepareStatement(sql))
         {
             for(int i=0;i<values.size();i++)
@@ -50,12 +50,18 @@ public class DBMedicalInfoRepository implements MedicalInfoRepository {
                 while(resultSet.next())
                 {
                     MedicalInfo medicalInfo= DBGetters.getMedicalInfo(resultSet);
-
-                    medicalInfo=addBloodTests(medicalInfo,medicalInfos);
-                    medicalInfos.put(medicalInfo.getId(),medicalInfo);
-
+                    if(!medicalInfos.containsKey(medicalInfo.getId()))
+                    {
+                        List<MedicalInfo> medicalInfoList=new ArrayList<>();
+                        medicalInfoList.add(medicalInfo);
+                        medicalInfos.put(medicalInfo.getId(),medicalInfoList);
+                    }
+                    else
+                    {
+                        medicalInfos.get(medicalInfo.getId()).add(medicalInfo);
+                    }
                 }
-
+                setBloodTests(medicalInfos);
 
             }
         }
@@ -63,41 +69,37 @@ public class DBMedicalInfoRepository implements MedicalInfoRepository {
         {
             logger.error(e);
         }
-        List<MedicalInfo> medicalInfos1=medicalInfos.values().stream().toList();
-        return medicalInfos1;
+        return medicalInfos.values();
     }
 
-    private MedicalInfo addBloodTests(MedicalInfo medicalInfo, HashMap<Integer,MedicalInfo> medicalInfos) {
-        if(medicalInfo.getMedicalHistory().size()==0)
+    private List<MedicalInfo> setBloodTests(HashMap<Integer, List<MedicalInfo>> medicalInfos) {
+        List<MedicalInfo> medicalInfoList= (List<MedicalInfo>) medicalInfos.values();
+        for(Map.Entry<Integer,MedicalInfo> entry:medicalInfos.entrySet())
         {
-            return medicalInfo;
+            MedicalInfo medicalInfo=entry.getValue();
+            {
+                medicalInfo.setMedicalHistory(DBGetters.getBloodTests(medicalInfo.getId()));
+            }
+            {
+                medicalInfo.setMedicalHistory(DBGetters.getBloodTests(medicalInfo.getId()));
+            }
         }
-        else
         {
-            List<BloodTest> bloodTestsExisting=medicalInfos.get(medicalInfo.getId()).getMedicalHistory();
-            bloodTestsExisting.add(medicalInfo.getMedicalHistory().get(0));
-            medicalInfo.setMedicalHistory(bloodTestsExisting);
-            return medicalInfo;
+            medicalInfo.setMedicalHistory(DBGetters.getBloodTests(medicalInfo.getId()));
         }
-
+        {
+            medicalInfo.setMedicalHistory(DBGetters.getBloodTests(medicalInfo.getId()));
+        }
     }
 
     @Override
     public Optional<MedicalInfo> findOne(Integer integer) {
-        List<String> attributes=List.of("id_MedicalInformation");
-        List<Object> values=List.of(integer);
-        List<MedicalInfo> medicalInfos=(List<MedicalInfo>)findAllUtilitary(attributes,values);
-        if(medicalInfos.size()>0)
-        {
-            return Optional.of(medicalInfos.get(0));
-        }
         return Optional.empty();
-
     }
 
     @Override
     public Iterable<MedicalInfo> findAll() {
-        return findAllUtilitary(null,new ArrayList<>());
+        return null;
     }
 
     @Override
@@ -111,19 +113,11 @@ public class DBMedicalInfoRepository implements MedicalInfoRepository {
             medicalInfoValidator.validate(entity);
         }
         Connection con=dbUtils.getConnection();
-        try(java.sql.PreparedStatement preparedStatement=con.prepareStatement("INSERT INTO InformatiiMedicale (id,eligibilitateDonare,grupaSange,Rh) VALUES (?,?,?,?)"))
+        try(java.sql.PreparedStatement preparedStatement=con.prepareStatement("INSERT INTO MedicalInformation(eligibil_MedicalInformation,grupaSange_MedicalInformation,rh_MedicalInformation) VALUES (?,?,?)"))
         {
-            preparedStatement.setInt(1,entity.getId());
-            if(entity.getEligibility())
-            {
-                preparedStatement.setInt(2,1);
-            }
-            else
-            {
-                preparedStatement.setInt(2,0);
-            }
-            preparedStatement.setString(3,entity.getBloodType().toString());
-            preparedStatement.setString(4,entity.getRh().toString());
+            preparedStatement.setBoolean(1,entity.isEligibil());
+            preparedStatement.setString(2,entity.getBloodType().toString());
+            preparedStatement.setString(3,entity.getRh().toString());
             preparedStatement.executeUpdate();
             return Optional.empty();
         }

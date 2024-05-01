@@ -82,28 +82,8 @@ public class DBPersonalDataRepository implements PersonalDataRepository {
 
     @Override
     public Optional<PersonalData> save(PersonalData entity) {
-        if(personalDataValidator!=null)
-            personalDataValidator.validate(entity);
-        Connection con=dbUtils.getConnection();
-        String sql="INSERT INTO DatePersonale (id, id_adresa, telefon, nume, prenume, cnp, sex, data_nasterii) VALUES (?,?,?,?,?,?,?,?)";
-                try(java.sql.PreparedStatement preparedStatement=con.prepareStatement(sql))
-                {
-                    preparedStatement.setInt(1,entity.getId());
-                    preparedStatement.setInt(2,entity.getAddress().getId());
-                    preparedStatement.setString(3,entity.getPhoneNumber());
-                    preparedStatement.setString(4,entity.getFirstName());
-                    preparedStatement.setString(5,entity.getLastName());
-                    preparedStatement.setString(6,entity.getCnp());
-                    preparedStatement.setString(7,entity.getSex());
-                    preparedStatement.setString(8,entity.getBirthDate().toString());
-                    preparedStatement.executeUpdate();
-                    return Optional.of(entity);
-                }
-                catch (java.sql.SQLException e)
-                {
-                    logger.error(e);
-                }
-                  return Optional.empty();}
+        return Optional.empty();
+    }
 
     @Override
     public Optional<PersonalData> delete(PersonalData entity) {
