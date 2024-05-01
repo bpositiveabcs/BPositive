@@ -8,7 +8,7 @@ public class Student extends Person{
     private String faculty;
     private Institution university;
 
-    public Student(LogInfo personLogInfo, Integer points, PersonalData personalDate, MedicalInfo medicalInfo, Institution institution, Integer year, String bloodType, String faculty, Institution university) {
+    public Student(LogInfo personLogInfo, Integer points, PersonalDate personalDate, MedicalInfo medicalInfo, Institution institution, Integer year, String bloodType, String faculty, Institution university) {
         super(personLogInfo, points, personalDate, medicalInfo, institution);
         this.year = year;
         this.bloodType = bloodType;

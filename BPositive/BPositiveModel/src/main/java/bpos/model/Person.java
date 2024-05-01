@@ -6,12 +6,12 @@ import java.util.List;
 public class Person extends Entity<Integer> {
     private LogInfo personLogInfo;
     private Integer points;
-    private PersonalData personalDate;
+    private PersonalDate personalDate;
     private MedicalInfo medicalInfo;
     private List<Donation> donations;
     Institution institution;
 
-    public Person(LogInfo personLogInfo, Integer points, PersonalData personalDate, MedicalInfo medicalInfo, Institution institution) {
+    public Person(LogInfo personLogInfo, Integer points, PersonalDate personalDate, MedicalInfo medicalInfo, Institution institution) {
         this.personLogInfo = personLogInfo;
         this.points = points;
         this.personalDate = personalDate;
@@ -36,11 +36,11 @@ public class Person extends Entity<Integer> {
         this.points = points;
     }
 
-    public PersonalData getPersonalDate() {
+    public PersonalDate getPersonalDate() {
         return personalDate;
     }
 
-    public void setPersonalDate(PersonalData personalDate) {
+    public void setPersonalDate(PersonalDate personalDate) {
         this.personalDate = personalDate;
     }
 
