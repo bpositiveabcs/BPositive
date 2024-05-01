@@ -7,7 +7,6 @@ public class LogInfo extends Entity<Integer>{
     private String password;
     private String email;
     private String seed;
-    public LogInfo(){}
     public LogInfo(String username, String password, String email, String seed) {
         this.username = username;
         this.password = password;

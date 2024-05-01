@@ -9,10 +9,6 @@ public class EventDTO implements java.io.Serializable{
     private String eventName;
     private String eventAnnouncementDate;
 
-    public EventDTO() {
-
-    }
-
     public String getId() {
         return id;
     }

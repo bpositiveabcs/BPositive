@@ -26,10 +26,6 @@ public class Student extends Person{
         this.group=grupa;
     }
 
-    public Student() {
-
-    }
-
     public Integer getYear() {
         return year;
     }

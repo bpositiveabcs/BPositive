@@ -16,10 +16,6 @@ public class BloodTest extends Entity<Integer> {
         this.medicalInfo = medicalInfo;
     }
 
-    public BloodTest() {
-
-    }
-
     public String getName() {
         return name;
     }
