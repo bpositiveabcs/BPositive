@@ -7,9 +7,8 @@ public class Person extends Entity<Integer> {
     private LogInfo personLogInfo;
     private Integer points;
     private PersonalData personalDate;
-    private MedicalInfo medicalInfo; //se preiau din baza de date la need
-    private List<Donation> donations;//se preiau din baza de date la need
-    private List<Event> events;
+    private MedicalInfo medicalInfo;
+    private List<Donation> donations;
     Institution institution;
 
     public Person(LogInfo personLogInfo, Integer points, PersonalData personalDate, MedicalInfo medicalInfo, Institution institution) {

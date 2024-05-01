@@ -1,6 +1,6 @@
 package bpos.model;
 
-import java.time.LocalDate;
+import java.util.Date;
 import java.util.Objects;
 
 public class PersonalData extends Entity<Integer>{
@@ -10,9 +10,9 @@ public class PersonalData extends Entity<Integer>{
     private String lastName;
     private String cnp;
     private String sex;
-    private LocalDate birthDate;
+    private Date birthDate;
 
-    public PersonalData(Address address, String phoneNumber, String firstName, String lastName, String cnp, String sex, LocalDate birthDate) {
+    public PersonalData(Address address, String phoneNumber, String firstName, String lastName, String cnp, String sex, Date birthDate) {
         this.address = address;
         this.phoneNumber = phoneNumber;
         this.firstName = firstName;
@@ -70,11 +70,11 @@ public class PersonalData extends Entity<Integer>{
         this.sex = sex;
     }
 
-    public LocalDate getBirthDate() {
+    public Date getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(LocalDate birthDate) {
+    public void setBirthDate(Date birthDate) {
         this.birthDate = birthDate;
     }
 
