@@ -82,12 +82,4 @@ public class Person extends Entity<Integer> {
     public void setInstitution(Institution institution) {
         this.institution = institution;
     }
-
-    public List<Event> getEvents() {
-        return events;
-    }
-
-    public void setEvents(List<Event> events) {
-        this.events = events;
-    }
 }

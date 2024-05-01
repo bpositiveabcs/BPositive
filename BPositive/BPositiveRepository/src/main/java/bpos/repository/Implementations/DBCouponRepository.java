@@ -28,7 +28,7 @@ public class DBCouponRepository implements CouponRepository {
     private Iterable<Coupon> findAllUtilitary(List<String> attributes, List<Object> values)
     {
         Connection con=dbUtils.getConnection();
-        String sql="SELECT * FROM VIEW_Cupon";
+        String sql="SELECT * FROM View_Cupon";
         if(attributes!=null)
         {
             sql+=" where ";
