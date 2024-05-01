@@ -1,4 +1,4 @@
-package bpos.model.Enums;
+package bpos.model;
 
 public enum BloodType {
 

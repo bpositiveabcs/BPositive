@@ -6,9 +6,6 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/BPositiveModel/BPositive.BPositiveModel.iml" filepath="$PROJECT_DIR$/.idea/modules/BPositiveModel/BPositive.BPositiveModel.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/BPositiveModel/BPositive.BPositiveModel.main.iml" filepath="$PROJECT_DIR$/.idea/modules/BPositiveModel/BPositive.BPositiveModel.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/BPositiveModel/BPositive.BPositiveModel.test.iml" filepath="$PROJECT_DIR$/.idea/modules/BPositiveModel/BPositive.BPositiveModel.test.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/BPositiveRepository/BPositive.BPositiveRepository.iml" filepath="$PROJECT_DIR$/.idea/modules/BPositiveRepository/BPositive.BPositiveRepository.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/BPositiveRepository/BPositive.BPositiveRepository.main.iml" filepath="$PROJECT_DIR$/.idea/modules/BPositiveRepository/BPositive.BPositiveRepository.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/BPositiveRepository/BPositive.BPositiveRepository.test.iml" filepath="$PROJECT_DIR$/.idea/modules/BPositiveRepository/BPositive.BPositiveRepository.test.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/BPositive.main.iml" filepath="$PROJECT_DIR$/.idea/modules/BPositive.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/BPositive.test.iml" filepath="$PROJECT_DIR$/.idea/modules/BPositive.test.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/MPPProj.iml" filepath="$PROJECT_DIR$/.idea/MPPProj.iml" />
