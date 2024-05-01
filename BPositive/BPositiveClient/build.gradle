@@ -1,0 +1,32 @@
+plugins {
+    id 'java'
+    id 'org.openjfx.javafxplugin' version '0.1.0'
+    id 'application'
+}
+javafx {
+    version="17"
+    modules = [ 'javafx.controls', 'javafx.fxml'  ]
+}
+group = 'bpos.client'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation project(path: ':BPositiveNetworking')
+    implementation project(path: ':BPositiveServices')
+    implementation project(path: ':BPositiveModel')
+    testImplementation platform('org.junit:junit-bom:5.9.1')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+
+    implementation 'org.openjfx:javafx-controls:17' // Am actualizat aici versiunea la 17
+    implementation 'org.openjfx:javafx-fxml:17'
+}
+application{
+    mainClass='bpos.client.StartClient'
+}
+test {
+    useJUnitPlatform()
+}
