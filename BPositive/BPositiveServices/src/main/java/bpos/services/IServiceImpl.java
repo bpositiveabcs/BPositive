@@ -30,7 +30,7 @@ public interface IServiceImpl {
     Optional<Center> deleteCenter(Center entity) throws ServicesExceptions;
     Optional<Center> updateCenter(Center entity) throws ServicesExceptions;
     //coupon
-
+    //Iterable<Coupon> findAllUtilitaryCoupon(List<String> attributes, List<Object> values) throws ServicesExceptions;
     Iterable<Coupon> findByCodeCoupon(String code) throws ServicesExceptions;
     Iterable<Coupon> findByProviderCoupon(String provider) throws ServicesExceptions;
     Iterable<Coupon> findByNameCoupon(String name) throws ServicesExceptions;

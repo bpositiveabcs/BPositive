@@ -11,18 +11,11 @@ import org.apache.logging.log4j.Logger;
 import java.sql.Connection;
 import java.util.List;
 import java.util.Optional;
-import java.util.Properties;
 
 public class DBStudentRepository implements StudentRepository {
     private DBUtils dbUtils;
     private static final Logger logger= LogManager.getLogger();
-    private StudentValidator   studentValidator;
-
-    public DBStudentRepository(Properties properties, StudentValidator studentValidator) {
-        this.dbUtils = new DBUtils(properties);
-        this.studentValidator = studentValidator;
-    }
-
+    private StudentValidator    studentValidator;
     private Iterable<Student> findAllUtilitary(List<String> attributes, List<Object> values)
     {
         Connection con=dbUtils.getConnection();

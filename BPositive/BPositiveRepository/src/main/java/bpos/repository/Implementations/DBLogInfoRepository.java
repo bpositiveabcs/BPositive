@@ -11,16 +11,9 @@ import org.apache.logging.log4j.Logger;
 import java.sql.Connection;
 import java.util.List;
 import java.util.Optional;
-import java.util.Properties;
 
 public class DBLogInfoRepository implements LogInfoRepository {
     private DBUtils dbUtils;
-
-    public DBLogInfoRepository(Properties properties, LogInfoValidator logInfoValidator) {
-        this.dbUtils = new DBUtils(properties);
-        this.logInfoValidator = logInfoValidator;
-    }
-
     private static final Logger logger= LogManager.getLogger();
     private LogInfoValidator logInfoValidator;
     private Iterable<LogInfo> findAllUtilitary(List<String> attributes, List<Object> values)

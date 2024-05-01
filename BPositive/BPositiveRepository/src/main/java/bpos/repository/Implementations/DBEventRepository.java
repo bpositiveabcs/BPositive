@@ -12,18 +12,11 @@ import java.sql.Connection;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
-import java.util.Properties;
 
 public class DBEventRepository implements EventRepository {
     private DBUtils dbUtils;
     private static final Logger logger= LogManager.getLogger();
     private EventValidator eventValidator;
-
-    public DBEventRepository(Properties properties, EventValidator eventValidator) {
-        this.dbUtils = new DBUtils(properties);
-        this.eventValidator = eventValidator;
-    }
-
     private Iterable<Event> findAllUtilitary(List<String> attributes, List<Object> values)
     {
         Connection con=dbUtils.getConnection();
