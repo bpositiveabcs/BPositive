@@ -11,16 +11,6 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/BPositiveRepository/BPositive.BPositiveRepository.test.iml" filepath="$PROJECT_DIR$/.idea/modules/BPositiveRepository/BPositive.BPositiveRepository.test.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/BPositive.main.iml" filepath="$PROJECT_DIR$/.idea/modules/BPositive.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/BPositive.test.iml" filepath="$PROJECT_DIR$/.idea/modules/BPositive.test.iml" />
-      <module fileurl="file://$PROJECT_DIR$/BPositiveClient.iml" filepath="$PROJECT_DIR$/BPositiveClient.iml" />
-      <module fileurl="file://$PROJECT_DIR$/BPositiveNetworking.iml" filepath="$PROJECT_DIR$/BPositiveNetworking.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/BPositiveNetworking.main.iml" filepath="$PROJECT_DIR$/.idea/modules/BPositiveNetworking.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/BPositiveNetworking.test.iml" filepath="$PROJECT_DIR$/.idea/modules/BPositiveNetworking.test.iml" />
-      <module fileurl="file://$PROJECT_DIR$/BPositiveServer.iml" filepath="$PROJECT_DIR$/BPositiveServer.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/BPositiveServer.main.iml" filepath="$PROJECT_DIR$/.idea/modules/BPositiveServer.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/BPositiveServer.test.iml" filepath="$PROJECT_DIR$/.idea/modules/BPositiveServer.test.iml" />
-      <module fileurl="file://$PROJECT_DIR$/BPositiveServices.iml" filepath="$PROJECT_DIR$/BPositiveServices.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/BPositiveServices.main.iml" filepath="$PROJECT_DIR$/.idea/modules/BPositiveServices.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/BPositiveServices.test.iml" filepath="$PROJECT_DIR$/.idea/modules/BPositiveServices.test.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/MPPProj.iml" filepath="$PROJECT_DIR$/.idea/MPPProj.iml" />
     </modules>
   </component>
