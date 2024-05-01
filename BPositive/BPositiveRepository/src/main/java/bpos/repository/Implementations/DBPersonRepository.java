@@ -345,7 +345,7 @@ public class DBPersonRepository implements PersonRepository {
     public Person findByEmail(String email) {
         List<String> attributes=new java.util.ArrayList<>();
         List<Object> values=new java.util.ArrayList<>();
-        attributes.add("email_LogInInfo");
+        attributes.add("email_DatePersonale");
         values.add(email);
         Iterable<Person> persons=findAllUtilitary(attributes,values);
         if(persons.iterator().hasNext())
