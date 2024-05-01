@@ -161,10 +161,9 @@ public class DBPersonRepository implements PersonRepository {
         attributes.add("ID_Persoana");
         values.add(integer);
         Iterable<Person> persons=findAllUtilitary(attributes,values);
-        List<Person> personList=(List<Person>) persons;
         if(persons.iterator().hasNext())
         {
-            return Optional.of(personList.get(0));
+            return Optional.of(persons.iterator().next());
         }
         return Optional.empty();}
 
@@ -348,12 +347,11 @@ public class DBPersonRepository implements PersonRepository {
         List<Object> values=new java.util.ArrayList<>();
         attributes.add("email_LogInInfo");
         values.add(email);
-        List<Person> persons=(List<Person>) findAllUtilitary(attributes,values);
-        if(persons.size()!=0)
+        Iterable<Person> persons=findAllUtilitary(attributes,values);
+        if(persons.iterator().hasNext())
         {
-            return persons.get(0);
+            return persons.iterator().next();
         }
-
         return null;
     }
 

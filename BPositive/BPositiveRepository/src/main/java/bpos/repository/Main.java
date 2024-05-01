@@ -110,7 +110,7 @@ public class Main {
 //        Coupon coupon=dbCouponRepository.findOne(1).get();
 //cupon id 1
         //persoana id 4
-        LogInfo logInfo1= dbLogInfoRepository.findByEmail("p1");
+        LogInfo logInfo1= dbLogInfoRepository.findByEmail("admin");
         PersonalData personalData=dbPersonalDataRepository.findOne(4).get();
         MedicalInfo medicalInfo=dbMedicalInfoRepository.findOne(1).get();
         Institution institution=dbInstitutionRepository1.findOne(1).get();

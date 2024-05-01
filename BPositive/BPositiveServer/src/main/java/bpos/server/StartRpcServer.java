@@ -1,7 +1,5 @@
 package bpos.server;
 
-import bpos.model.LogInfo;
-import bpos.model.Person;
 import bpos.model.Validators.Enums.Interfaces.Validator;
 import bpos.model.Validators.Implementation.*;
 import bpos.networking.utils.AbstractServer;
@@ -56,16 +54,6 @@ public class StartRpcServer {
         DBCouponRepository couponRepository = new DBCouponRepository(serverProps,couponValidator);
         DonationTypeValidator donationTypeValidator = new DonationTypeValidator();
         DBDonationTypeRepository donationTypeRepository = new DBDonationTypeRepository(serverProps,donationTypeValidator);
-
-
-        LogInfo logInfo1= logInfoRepository.findByEmail("p1");
-        personRepository.findAll();
-
-
-
-
-
-
         IServiceImpl serviceImpl = new ServerImlp(institutionRepository,logInfoRepository,medicalInfoRepository,personRepository,personalDataRepository,retrievedCouponsRepository,addressRepository,bloodTestRepository,centerRepository,couponRepository,donationRepository,donationTypeRepository,eventRepository,studentRepository);
         int competitionServerPort = defaultPort;
         try{
