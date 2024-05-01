@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module external.linked.project.id="BPositive:main" external.linked.project.path="$MODULE_DIR$/../../BPositive" external.root.project.path="$MODULE_DIR$/../../BPositive" external.system.id="GRADLE" external.system.module.group="BPositive" external.system.module.type="sourceSet" external.system.module.version="1.0-SNAPSHOT" type="JAVA_MODULE" version="4">
+<module external.linked.project.id="BPositive:main" external.linked.project.path="$MODULE_DIR$/../../BPositive" external.root.project.path="$MODULE_DIR$/../../BPositive" external.system.id="GRADLE" external.system.module.group="bpos" external.system.module.type="sourceSet" external.system.module.version="1.0-SNAPSHOT" type="JAVA_MODULE" version="4">
   <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_17">
     <output url="file://$MODULE_DIR$/../../BPositive/build/classes/java/main" />
     <exclude-output />
@@ -9,13 +9,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="Gradle: org.apache.logging.log4j:log4j-core:2.17.0" level="project" />
-    <orderEntry type="library" name="Gradle: org.apache.logging.log4j:log4j-api:2.17.0" level="project" />
-    <orderEntry type="library" name="Gradle: org.openjfx:javafx-fxml:win:17" level="project" />
-    <orderEntry type="library" name="Gradle: org.openjfx:javafx-controls:win:17" level="project" />
-    <orderEntry type="library" name="Gradle: org.openjfx:javafx-graphics:win:17" level="project" />
-    <orderEntry type="library" name="Gradle: org.openjfx:javafx-base:win:17" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.xerial:sqlite-jdbc:3.45.1.0" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.slf4j:slf4j-api:1.7.36" level="project" />
+    <orderEntry type="module" module-name="BPositive.BPositiveModel.main" />
+    <orderEntry type="library" name="Gradle: org.apache.commons:commons-lang3:3.12.0" level="project" />
   </component>
 </module>
