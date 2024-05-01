@@ -98,7 +98,7 @@ public class DTOUtils {
         }
     }
 
-    public static MedicalInfoDTO getDTOMedicalInfo(Optional<MedicalInfo> medicalInfo) {
+    private static MedicalInfoDTO getDTOMedicalInfo(Optional<MedicalInfo> medicalInfo) {
         if(medicalInfo.isEmpty()){
             return null;
         }
@@ -291,7 +291,7 @@ public class DTOUtils {
             } else {
                 bloodTestDTO.setId("");
             }
-          //  bloodTestDTO.setMedicalInfo(getDTOMedicalInfo(Optional.of(bloodTest.getMedicalInfo())));
+            bloodTestDTO.setMedicalInfo(getDTOMedicalInfo(Optional.of(bloodTest.getMedicalInfo())));
             if (bloodTest.getName() != null) {
                 bloodTestDTO.setName(bloodTest.getName());
             } else {
@@ -321,7 +321,7 @@ public class DTOUtils {
         }
         BloodTest bloodTest=new BloodTest();
         MedicalInfo medicalInfo=getFromDTOMedicalInfo(addressDTO.getMedicalInfo());
-        bloodTest.setMedicalInfo(medicalInfo.getId());
+        bloodTest.setMedicalInfo(medicalInfo);
         bloodTest.setName(addressDTO.getName());
         bloodTest.setPath(addressDTO.getPath());
         if(Objects.equals(addressDTO.getId(), "")){
