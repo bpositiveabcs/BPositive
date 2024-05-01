@@ -12,8 +12,6 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/BPositive.main.iml" filepath="$PROJECT_DIR$/.idea/modules/BPositive.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/BPositive.test.iml" filepath="$PROJECT_DIR$/.idea/modules/BPositive.test.iml" />
       <module fileurl="file://$PROJECT_DIR$/BPositiveClient.iml" filepath="$PROJECT_DIR$/BPositiveClient.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/BPositiveClient.main.iml" filepath="$PROJECT_DIR$/.idea/modules/BPositiveClient.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/BPositiveClient.test.iml" filepath="$PROJECT_DIR$/.idea/modules/BPositiveClient.test.iml" />
       <module fileurl="file://$PROJECT_DIR$/BPositiveNetworking.iml" filepath="$PROJECT_DIR$/BPositiveNetworking.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/BPositiveNetworking.main.iml" filepath="$PROJECT_DIR$/.idea/modules/BPositiveNetworking.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/BPositiveNetworking.test.iml" filepath="$PROJECT_DIR$/.idea/modules/BPositiveNetworking.test.iml" />
