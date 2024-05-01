@@ -133,9 +133,9 @@ public class DBGetters {
         return donation;
     }
     public static Person getPerson(ResultSet resultSet) throws SQLException {
-        int id=resultSet.getInt("id_Persoana");
+        int id=resultSet.getInt("id_Person");
         LogInfo logInfo=getLogInfo(resultSet);
-        Integer points=resultSet.getInt("puncte_Persoana");
+        Integer points=resultSet.getInt("puncte_Person");
         PersonalData personalData=getPersonalData(resultSet);
         Integer id_medicalInformation=resultSet.getInt("id_MedicalInformation");
         int medicalInfoId = resultSet.getInt("id_MedicalInformation");
