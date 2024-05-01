@@ -55,7 +55,7 @@ public class DBGetters {
          personalData.setId(id);
          return personalData;
     }
-    public static Coupon getCoupon(ResultSet resultSet) throws SQLException {
+    protected static Coupon getCoupon(ResultSet resultSet) throws SQLException {
         int id=resultSet.getInt("id_Cupon");
         String nume=resultSet.getString("nume_Cupon");
         String provider=resultSet.getString("provider_Cupon");
