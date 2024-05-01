@@ -58,10 +58,6 @@ public class Request implements Serializable {
             request.data2(data2);
             return this;
         }
-        public Builder data3(Object data3) {
-            request.data3(data3);
-            return this;
-        }
 
 
         public Request build() {
