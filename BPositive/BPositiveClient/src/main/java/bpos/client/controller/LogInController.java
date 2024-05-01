@@ -50,6 +50,7 @@ public class LogInController {
 
         //Optional<Person> user = service.login(new LogInfo(username, password, "", ""), obs);
         LogInfo loginfo_user = service.findByUsernameLogInfo(username);
+        System.out.println(loginfo_user.toString());
         Optional<Person> user = service.login(loginfo_user, obs);
         //System.out.println(loginfo_user.toString());
 
