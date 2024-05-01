@@ -23,7 +23,7 @@ public class StartClient extends Application {
             System.out.println("Client properties set. ");
             clientProps.list(System.out);
         } catch (IOException e) {
-            System.err.println("Cannot find client.properties " + e);
+            System.err.println("Cannot find chatclient.properties " + e);
             return;
         }
         String serverIP = clientProps.getProperty("server.host", defaultServer);
