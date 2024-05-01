@@ -72,8 +72,8 @@ public class DBGetters {
 
     public static RetrievedCoupons getRetrievedCoupons(ResultSet resultSet) throws SQLException {
         Integer id=resultSet.getInt("id_CupoaneRetrieved");
-        LocalDateTime receivedDate= LocalDateTime.parse(resultSet.getString("preluat_la_data_de_CupoaneRetrieved"));
-        LocalDateTime expirationDate= LocalDateTime.parse(resultSet.getString("expira_la_CupoaneRetrieved"));
+        LocalDateTime receivedDate=resultSet.getTimestamp("preluat_la_data_de_CupoaneRetrieved").toLocalDateTime();
+        LocalDateTime expirationDate=resultSet.getTimestamp("expira_la_CupoaneRetrieved").toLocalDateTime();
         int idPersoana=resultSet.getInt("id_persoana_CupoaneRetrieved");
         String series=resultSet.getString("series_unique_CupoaneRetrieved");
         Coupon coupon=getCoupon(resultSet);
@@ -85,7 +85,7 @@ public class DBGetters {
         Integer id=resultSet.getInt("id_Analiza");
         String nume=resultSet.getString("nume_Analiza");
         String calerator=resultSet.getString("cale_Analiza");
-        int idMedicalInfo=resultSet.getInt("id_MedicalInformation");
+        int idMedicalInfo=resultSet.getInt("id_informatiimedicale");
         BloodTest bloodTest=new BloodTest(nume,calerator, idMedicalInfo);
         bloodTest.setId(id);
         return bloodTest;

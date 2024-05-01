@@ -55,17 +55,6 @@ public class LogInfo extends Entity<Integer>{
     }
 
     @Override
-    public String toString() {
-        return "LogInfo{" +
-                "username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", email='" + email + '\'' +
-                ", seed='" + seed + '\'' +
-                ", id=" + id +
-                "} " + super.toString();
-    }
-
-    @Override
     public int hashCode() {
         return Objects.hash(super.hashCode(), getUsername(), getPassword(), getEmail(), getSeed());
     }

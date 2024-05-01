@@ -107,21 +107,7 @@ public class Main {
 //        personalData.setId(4);
 //        dbPersonalDataRepository.save(personalData);
 //        dbPersonalDataRepository.findAll().forEach(s -> System.out.println(s)    );
-        Coupon coupon=dbCouponRepository.findOne(1).get();
-//cupon id 1
-        //persoana id 4
-        LogInfo logInfo1= dbLogInfoRepository.findByEmail("admin");
-        PersonalData personalData=dbPersonalDataRepository.findOne(4).get();
-        MedicalInfo medicalInfo=dbMedicalInfoRepository.findOne(1).get();
-        Institution institution=dbInstitutionRepository1.findOne(1).get();
-        Person person=new Person(logInfo1,2,personalData,medicalInfo,institution);
-        person.setId(4);
-//        dbPersonRepository.save(person);
-//        dbPersonRepository.findAll().forEach(s -> System.out.println(s));
-      //  RetrievedCoupons retrievedCoupons=new RetrievedCoupons(coupon,person.getId(),"XXA",LocalDateTime.now(),LocalDateTime.now());
-    //    dbRetrievedCouponsRepository.save(retrievedCoupons);
-        dbRetrievedCouponsRepository.findAll().forEach(s -> System.out.println(s));
-        
+        RetrievedCoupons retrievedCoupons=dbRetrievedCouponsRepository.findOne(1).get();
 
     }
 }

@@ -15,17 +15,6 @@ public class Center extends Entity<Integer>{
         this.address = address;
     }
 
-    @Override
-    public String toString() {
-        return "Center{" +
-                "institutionDetails='" + institutionDetails + '\'' +
-                ", logInfo=" + logInfo +
-                ", centerName='" + centerName + '\'' +
-                ", address='" + address + '\'' +
-                ", id=" + id +
-                "} " + super.toString();
-    }
-
     public Center() {
 
     }
