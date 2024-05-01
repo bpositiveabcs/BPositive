@@ -5,23 +5,19 @@ import java.util.Objects;
 
 public class Event extends Entity<Integer>{
     private String eventName;
-    private LocalDateTime eventAnnouncementDate;
     private LocalDateTime eventStartDate;
     private LocalDateTime eventEndDate;
     private Integer maxParticipants;
     private String eventDescription;
     private String eventRequirements;
-    private Center center;
 
-    public Event(String eventName, LocalDateTime eventAnnouncementDate, LocalDateTime eventStartDate, LocalDateTime eventEndDate, Integer maxParticipants, String eventDescription, String eventRequirements, Center center) {
+    public Event(String eventName, LocalDateTime eventStartDate, LocalDateTime eventEndDate, Integer maxParticipants, String eventDescription, String eventRequirements) {
         this.eventName = eventName;
-        this.eventAnnouncementDate = eventAnnouncementDate;
         this.eventStartDate = eventStartDate;
         this.eventEndDate = eventEndDate;
         this.maxParticipants = maxParticipants;
         this.eventDescription = eventDescription;
         this.eventRequirements = eventRequirements;
-        this.center = center;
     }
 
     public String getEventName() {
@@ -83,21 +79,5 @@ public class Event extends Entity<Integer>{
     @Override
     public int hashCode() {
         return Objects.hash(super.hashCode(), getEventName(), getEventStartDate(), getEventEndDate(), getMaxParticipants(), getEventDescription(), getEventRequirements());
-    }
-
-    public LocalDateTime getEventAnnouncementDate() {
-        return eventAnnouncementDate;
-    }
-
-    public void setEventAnnouncementDate(LocalDateTime eventAnnouncementDate) {
-        this.eventAnnouncementDate = eventAnnouncementDate;
-    }
-
-    public Center getCenter() {
-        return center;
-    }
-
-    public void setCenter(Center center) {
-        this.center = center;
     }
 }
