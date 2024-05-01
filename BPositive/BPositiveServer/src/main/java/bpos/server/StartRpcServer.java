@@ -22,7 +22,7 @@ public class StartRpcServer {
             System.out.println("Server properties set. ");
             serverProps.list(System.out);
         } catch (IOException e) {
-            System.err.println("Cannot find server.properties " + e);
+            System.err.println("Cannot find competitionserver.properties " + e);
             return;
         }
         PersonValidator personValidator = new PersonValidator();

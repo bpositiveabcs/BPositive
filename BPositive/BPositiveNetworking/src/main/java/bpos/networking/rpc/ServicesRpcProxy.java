@@ -1780,7 +1780,6 @@ Request req =new Request.Builder().type(RequestType.FIND_BY_ADDRESS_INSTITUTION)
         return response.type()== ResponseType.NEW ;
     }
     private void handleUpdate(Response response){
-        System.out.println("S-a intrat in update");
 //        if (response.type()== ResponseType.NEW){
 //            //System.out.println("am trimis raspuns");
 //            RegistrationDTO regDTO= (RegistrationDTO) response.data();
