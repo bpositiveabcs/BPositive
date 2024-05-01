@@ -141,12 +141,4 @@ public class DTOUtils {
     public static Iterable<PersonalData> getDTOPersonalDataList(Iterable<PersonalData> persons) {
         return  null;
     }
-
-    public static PersonalData getFromDTOPersonalData(PersonalDataDTO institution) {
-        return null;
-    }
-
-    public static Iterable<PersonDTO> getDTOPersonList(Iterable<Person> persons) {
-        return null;
-    }
 }

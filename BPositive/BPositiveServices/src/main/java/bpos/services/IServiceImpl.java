@@ -116,7 +116,7 @@ public interface IServiceImpl {
     Iterable<Person> findByPhoneNumberPerson(String phoneNumber) throws ServicesExceptions;
     Person findByUsernamePerson(String username) throws ServicesExceptions;
     //retrieved
-
+    //Iterable<RetrievedCoupons> findAllUtilitaryRetrieved(List<String > attributes, List<Object> values) throws ServicesExceptions;
     Optional<RetrievedCoupons> findOneRetrieved(Integer integer) throws ServicesExceptions;
     Iterable<RetrievedCoupons> findAllRetrieved() throws ServicesExceptions;
     Optional<RetrievedCoupons> saveRetrieved(RetrievedCoupons entity) throws ServicesExceptions;
