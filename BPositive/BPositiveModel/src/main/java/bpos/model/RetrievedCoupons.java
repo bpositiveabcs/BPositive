@@ -6,15 +6,11 @@ import java.util.Objects;
 public class RetrievedCoupons extends Entity<Integer> {
 
     private Coupon coupon;
-    private int id_persoana;
-    private String series;
     private LocalDateTime receivedDate;
     private LocalDateTime expirationDate;
 
-    public RetrievedCoupons(Coupon coupon, int idPersoana, String series, LocalDateTime receivedDate, LocalDateTime expirationDate) {
+    public RetrievedCoupons(Coupon coupon, LocalDateTime receivedDate, LocalDateTime expirationDate) {
         this.coupon = coupon;
-        id_persoana = idPersoana;
-        this.series = series;
         this.receivedDate = receivedDate;
         this.expirationDate = expirationDate;
     }
@@ -63,20 +59,5 @@ public class RetrievedCoupons extends Entity<Integer> {
         return Objects.hash(super.hashCode(), getCoupon(), getReceivedDate(), getExpirationDate());
     }
 
-    public int getId_persoana() {
-        return id_persoana;
-    }
-
-    public void setId_persoana(int id_persoana) {
-        this.id_persoana = id_persoana;
-    }
-
-    public String getSeries() {
-        return series;
-    }
-
-    public void setSeries(String series) {
-        this.series = series;
-    }
 }
 

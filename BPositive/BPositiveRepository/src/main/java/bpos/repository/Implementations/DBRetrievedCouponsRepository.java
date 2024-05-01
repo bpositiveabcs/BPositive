@@ -77,107 +77,36 @@ public class DBRetrievedCouponsRepository implements RetrievedCouponsRepository 
 
     @Override
     public Iterable<RetrievedCoupons> findAll() {
-        return findAllUtilitary(null,new java.util.ArrayList<>());
+        return null;
     }
 
     @Override
     public Optional<RetrievedCoupons> save(RetrievedCoupons entity) {
-        if(entity==null)
-        {
-            throw new IllegalArgumentException("entity must not be null");
-        }
-        if(entity.getId()!=null)
-        {
-            return Optional.empty();
-        }
-        if(retrievedCouponsValidator!=null)
-        {
-            System.out.println("Validator is not null");
-            retrievedCouponsValidator.validate(entity);
-        }
-        Connection connection=dbUtils.getConnection();
-        String sql="INSERT INTO CupoaneRetrieved(id_persoana,id_cupon,preluat_la_data_de,expira_la,series_unique) VALUES (?,?,?,?,?,?)";
-            try(java.sql.PreparedStatement preparedStatement=connection.prepareStatement(sql,java.sql.Statement.RETURN_GENERATED_KEYS))
-            {
-                preparedStatement.setInt(1,entity.getId());
-                preparedStatement.setInt(2,entity.getCoupon().getId());
-                preparedStatement.setString(3,entity.getReceivedDate().toString());
-                preparedStatement.setString(4,entity.getExpirationDate().toString());
-                preparedStatement.setString(5,entity.getSeries());
-                preparedStatement.executeUpdate();
-                return Optional.of(entity);
-            }
-            catch (java.sql.SQLException e)
-            {
-                logger.error(e);
-            }
-
         return Optional.empty();
     }
 
     @Override
     public Optional<RetrievedCoupons> delete(RetrievedCoupons entity) {
-
-        if(entity==null)
-        {
-            throw new IllegalArgumentException("entity must not be null");
-        }
-        Connection connection=dbUtils.getConnection();
-        try(java.sql.PreparedStatement preparedStatement=connection.prepareStatement("DELETE FROM CupoaneRetrieved WHERE id=?"))
-        {
-            preparedStatement.setInt(1,entity.getId());
-            preparedStatement.executeUpdate();
-            return Optional.of(entity);
-        }
-        catch (java.sql.SQLException e)
-        {
-            logger.error(e);
-        }
         return Optional.empty();
     }
 
     @Override
     public Optional<RetrievedCoupons> update(RetrievedCoupons entity) {
-
-        if(entity==null)
-        {
-            throw new IllegalArgumentException("entity must not be null");
-        }
-        if(retrievedCouponsValidator!=null)
-        {
-            retrievedCouponsValidator.validate(entity);
-        }
-        Connection connection=dbUtils.getConnection();
-        try(java.sql.PreparedStatement preparedStatement=connection.prepareStatement("UPDATE CupoaneRetrieved SET preluat_la_data_de=?,expira_la=?,series_unique=? WHERE id=?"))
-        {
-
-            preparedStatement.setString(1,entity.getReceivedDate().toString());
-            preparedStatement.setString(2,entity.getExpirationDate().toString());
-            preparedStatement.setString(3,entity.getSeries());
-            preparedStatement.setInt(4,entity.getId());
-            preparedStatement.executeUpdate();
-            return Optional.of(entity);
-        }
-        catch (java.sql.SQLException e)
-        {
-            logger.error(e);
-        }
         return Optional.empty();
     }
 
     @Override
     public Iterable<RetrievedCoupons> findByPersonId(int personId) {
-        return findAllUtilitary(List.of("id_CupoaneRetrieved"),List.of(personId));
+        return null;
     }
 
     @Override
     public Iterable<RetrievedCoupons> findByCouponId(int couponId) {
-        return findAllUtilitary(List.of("id_Cupon"),List.of(couponId));
+        return null;
     }
 
     @Override
     public Iterable<RetrievedCoupons> findByDate(String date) {
-
-        return findAllUtilitary(List.of("preluat_la_data_de_CupoaneRetrieved"),List.of(date));
+        return null;
     }
 }
