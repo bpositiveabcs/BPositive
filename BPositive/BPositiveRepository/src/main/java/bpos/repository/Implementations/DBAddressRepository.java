@@ -114,8 +114,7 @@ public class DBAddressRepository implements AddressRepository {
         }
         int result=0;
         Connection con=dbUtils.getConnection();
-        if(addressValidator!=null)
-            addressValidator.validate(entity);
+        addressValidator.validate(entity);
         try (PreparedStatement preparedStatement=con.prepareStatement("insert into Adresa(tara,judet,localitate,strada,numar,bloc,etaj,apartament) VALUES (?,?,?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS))
         {
             preparedStatement.setString(1,entity.getCountry());
@@ -194,8 +193,7 @@ logger.traceEntry("Update task {} ",entity);
         }
         int result=0;
         Connection con=dbUtils.getConnection();
-        if(addressValidator!=null)
-            addressValidator.validate(entity);
+        addressValidator.validate(entity);
         try (PreparedStatement preparedStatement=con.prepareStatement("update Adresa set tara=?,judet=?,localitate=?,strada=?,numar=?,bloc=?,etaj=?,apartament=? where id=?"))
         {
             preparedStatement.setString(1,entity.getCountry());

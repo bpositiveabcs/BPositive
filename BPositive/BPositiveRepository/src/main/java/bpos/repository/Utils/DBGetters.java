@@ -78,12 +78,11 @@ public class DBGetters {
         retrievedCoupons.setId(id);
         return retrievedCoupons;
     }
-    public static BloodTest getBloodTest(ResultSet resultSet) throws SQLException {
+    protected static BloodTest getBloodTest(ResultSet resultSet) throws SQLException {
         Integer id=resultSet.getInt("id_Analiza");
         String nume=resultSet.getString("nume_Analiza");
         String calerator=resultSet.getString("cale_Analiza");
-        MedicalInfo medicalInfo=getMedicalInfo(resultSet);
-        BloodTest bloodTest=new BloodTest(nume,calerator, medicalInfo);
+        BloodTest bloodTest=new BloodTest(nume,calerator);
         bloodTest.setId(id);
         return bloodTest;
     }
