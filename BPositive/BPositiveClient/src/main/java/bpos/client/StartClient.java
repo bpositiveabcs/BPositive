@@ -19,17 +19,17 @@ public class StartClient extends Application {
         System.out.println("In start");
         Properties clientProps = new Properties();
         try {
-            clientProps.load(StartClient.class.getClassLoader().getResourceAsStream("client.properties"));
+            clientProps.load(StartClient.class.getResourceAsStream("/competitionclient.properties"));
             System.out.println("Client properties set. ");
             clientProps.list(System.out);
         } catch (IOException e) {
             System.err.println("Cannot find chatclient.properties " + e);
             return;
         }
-        String serverIP = clientProps.getProperty("server.host", defaultServer);
+        String serverIP = clientProps.getProperty("competition.server.host", defaultServer);
         int serverPort = defaultChatPort;
         try {
-            serverPort = Integer.parseInt(clientProps.getProperty("server.port"));
+            serverPort = Integer.parseInt(clientProps.getProperty("competition.server.port"));
         } catch (NumberFormatException ex) {
             System.err.println("Wrong port number " + ex.getMessage());
             System.out.println("Using default port: " + defaultChatPort);
