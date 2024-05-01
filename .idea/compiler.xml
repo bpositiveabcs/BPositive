@@ -3,24 +3,12 @@
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel>
       <module name="BPositive" target="17" />
-      <module name="BPositive.BPositiveClient" target="17" />
-      <module name="BPositive.BPositiveClient.main" target="17" />
-      <module name="BPositive.BPositiveClient.test" target="17" />
       <module name="BPositive.BPositiveModel" target="17" />
       <module name="BPositive.BPositiveModel.main" target="17" />
       <module name="BPositive.BPositiveModel.test" target="17" />
-      <module name="BPositive.BPositiveNetworking" target="17" />
-      <module name="BPositive.BPositiveNetworking.main" target="17" />
-      <module name="BPositive.BPositiveNetworking.test" target="17" />
       <module name="BPositive.BPositiveRepository" target="17" />
       <module name="BPositive.BPositiveRepository.main" target="17" />
       <module name="BPositive.BPositiveRepository.test" target="17" />
-      <module name="BPositive.BPositiveServer" target="17" />
-      <module name="BPositive.BPositiveServer.main" target="17" />
-      <module name="BPositive.BPositiveServer.test" target="17" />
-      <module name="BPositive.BPositiveServices" target="17" />
-      <module name="BPositive.BPositiveServices.main" target="17" />
-      <module name="BPositive.BPositiveServices.test" target="17" />
       <module name="BPositive.main" target="17" />
       <module name="BPositive.test" target="17" />
       <module name="BPositiveClient" target="17" />

@@ -10,12 +10,8 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$/BPositive" />
-            <option value="$PROJECT_DIR$/BPositive/BPositiveClient" />
             <option value="$PROJECT_DIR$/BPositive/BPositiveModel" />
-            <option value="$PROJECT_DIR$/BPositive/BPositiveNetworking" />
             <option value="$PROJECT_DIR$/BPositive/BPositiveRepository" />
-            <option value="$PROJECT_DIR$/BPositive/BPositiveServer" />
-            <option value="$PROJECT_DIR$/BPositive/BPositiveServices" />
           </set>
         </option>
       </GradleProjectSettings>
