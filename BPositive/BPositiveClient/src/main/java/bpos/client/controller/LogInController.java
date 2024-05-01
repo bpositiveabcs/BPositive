@@ -48,10 +48,7 @@ public class LogInController {
         Parent userViewParent = loader.load();
         MainController userController = loader.getController();
 
-        //Optional<Person> user = service.login(new LogInfo(username, password, "", ""), obs);
-        LogInfo loginfo_user = service.findByUsernameLogInfo(username);
-        Optional<Person> user = service.login(loginfo_user, obs);
-        //System.out.println(loginfo_user.toString());
+        Optional<Person> user = service.login(new LogInfo(username, password, "", ""), obs);
 
         if (user.isPresent()) {
             System.out.println("Login successful");
