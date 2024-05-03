@@ -52,7 +52,7 @@ public class LogInController {
         Optional<Person> user = service.login(loginfo_user, obs);
         //System.out.println(loginfo_user.toString());
 
-        if (user.isPresent()) {
+        if (user.isPresent() && user.get().getPersonLogInfo().getPassword().equals(password)) {
             System.out.println("Login successful");
 
             userController.setServer(service);
