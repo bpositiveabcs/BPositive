@@ -14,6 +14,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Objects;
 import java.util.Optional;
 
 public class LogInController {
@@ -48,9 +49,14 @@ public class LogInController {
 
         //Optional<Person> user = service.login(new LogInfo(username, password, "", ""), obs);
         LogInfo loginfo_user = service.findByUsernameLogInfo(username);
+        if(!Objects.equals(loginfo_user.getPassword(), password)){
+            System.out.println("Password is not correct");
+            passwordTextField.clear();
+            return;
+        }
         System.out.println(loginfo_user.toString());
         Optional<Person> user = service.login(loginfo_user, obs);
-        //System.out.println(loginfo_user.toString());
+
 
         if (user.isPresent() && user.get().getPersonLogInfo().getPassword().equals(password)) {
             System.out.println("Login successful");
@@ -64,6 +70,8 @@ public class LogInController {
             stage.show();
         } else {
             System.out.println("Login failed");
+            passwordTextField.clear();
+            usernameTextField.clear();
         }
     }
 }
