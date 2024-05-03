@@ -20,13 +20,13 @@ public class DTOUtils {
         PersonalData personalData=getFromDTOPersonalData(user.getPersonalDate());
         MedicalInfo medicalInfo=getFromDTOMedicalInfo(user.getMedicalInfo());
         Institution institution=getFromDTOInstitution(user.getInstitution());
-        if(Objects.equals(user.getPoints(), "")){
+        if(Objects.equals(user.getPoints(), "") || user.getPoints()==null){
             person= new Person(loginfo,0,personalData,medicalInfo,institution);
         }
         else{
             person=new Person(loginfo, Integer.parseInt(user.getPoints()),personalData,medicalInfo,institution);
         }
-        if(Objects.equals(user.getId(), "")){
+        if(Objects.equals(user.getId(), "") || user.getId()==null){
             return person;
         }
         else {
@@ -40,7 +40,7 @@ public class DTOUtils {
             return null;
         }
         LogInfo logInfo=new LogInfo();
-        if(Objects.equals(user.getId(), "")){
+        if(Objects.equals(user.getId(), "") || user.getId()==null){
             logInfo= new LogInfo(user.getUsername(),user.getPassword(),user.getEmail(),user.getSeed());
             return logInfo;
         }
@@ -172,7 +172,7 @@ public class DTOUtils {
         }
         Center center=new Center();
         LogInfo loginfo=getFromDTOLogInfo(user.getLogInfo());
-        if(Objects.equals(user.getId(), "")){
+        if(Objects.equals(user.getId(), "") || user.getId()==null){
             center= new Center(user.getInstitutionDetails(),loginfo,user.getCenterName(),user.getAddress());
             return center;
         }
@@ -257,7 +257,7 @@ public class DTOUtils {
         }
         Address address=new Address();
 
-        if(Objects.equals(addressDTO.getFloor(), "")){
+        if(Objects.equals(addressDTO.getFloor(), "") || addressDTO.getFloor()==null){
             address.setFloor(0);
         }
         else{
@@ -270,7 +270,7 @@ public class DTOUtils {
         address.setNumberStreet(addressDTO.getNumberStreet());
         address.setBlock(addressDTO.getBlock());
         address.setApartment(addressDTO.getApartment());
-        if(Objects.equals(addressDTO.getId(), "")){
+        if(Objects.equals(addressDTO.getId(), "") || addressDTO.getId()==null){
             return address;
         }
         else {
@@ -324,7 +324,7 @@ public class DTOUtils {
         bloodTest.setMedicalInfo(medicalInfo.getId());
         bloodTest.setName(addressDTO.getName());
         bloodTest.setPath(addressDTO.getPath());
-        if(Objects.equals(addressDTO.getId(), "")){
+        if(Objects.equals(addressDTO.getId(), "") || addressDTO.getId()==null){
             return bloodTest;
         }
         else {
@@ -409,7 +409,7 @@ public class DTOUtils {
             return null;
         }
         Coupon coupon=new Coupon();
-        if(Objects.equals(addressDTO.getNecessaryPoints(), "")){
+        if(Objects.equals(addressDTO.getNecessaryPoints(), "") || addressDTO.getNecessaryPoints()==null){
             coupon.setNecessaryPoints(0);
         }
         else{
@@ -418,19 +418,19 @@ public class DTOUtils {
         coupon.setName(addressDTO.getName());
         coupon.setProvider(addressDTO.getProvider());
         coupon.setOffer(addressDTO.getOffer());
-        if(!Objects.equals(addressDTO.getUnavailableToClaimFrom(), ""))
+        if(!Objects.equals(addressDTO.getUnavailableToClaimFrom(), "") || addressDTO.getUnavailableToClaimFrom()!=null )
             coupon.setUnavailableToClaimFrom(LocalDateTime.parse(addressDTO.getUnavailableToClaimFrom()));
         else{
             coupon.setUnavailableToClaimFrom(null);
         }
-        if(Objects.equals(addressDTO.getValidityPeriod(), "")){
+        if(Objects.equals(addressDTO.getValidityPeriod(), "") || addressDTO.getValidityPeriod()==null ){
             coupon.setValidityPeriod(0);
         }
         else{
             coupon.setValidityPeriod(Integer.parseInt(addressDTO.getValidityPeriod()));
         }
         coupon.setSeries(addressDTO.getSeries());
-        if(Objects.equals(addressDTO.getId(), "")){
+        if(Objects.equals(addressDTO.getId(), "") || addressDTO.getId()==null){
             return coupon;
         }
         else {
@@ -480,7 +480,7 @@ public class DTOUtils {
         Donation donation=new Donation();
         DonationType donationType=getFROMDTODonationType(dateDonation.getDonationType());
         donation.setDonationType(donationType);
-        if(Objects.equals(dateDonation.getPoints(), "")){
+        if(Objects.equals(dateDonation.getPoints(), "") || dateDonation.getPoints()==null){
             donation.setPoints(0);
         }
         else{
@@ -526,14 +526,14 @@ public class DTOUtils {
             return null;
         }
         DonationType donationType=new DonationType();
-        if(Objects.equals(dateDonation.getWaitingInterval(), "")){
+        if(Objects.equals(dateDonation.getWaitingInterval(), "") || dateDonation.getWaitingInterval()==null){
             donationType.setWaitingInterval(0);
         }
         else{
             donationType.setWaitingInterval(Integer.parseInt(dateDonation.getWaitingInterval()));
         }
         donationType.setName(dateDonation.getName());
-        if(Objects.equals(dateDonation.getId(), "")){
+        if(Objects.equals(dateDonation.getId(), "") || dateDonation.getId()==null){
             return donationType;
         }
         else {
@@ -628,31 +628,31 @@ public class DTOUtils {
         Event event=new Event();
         Center center=getFromDTOCenter(date.getCenter());
         event.setCenter(center);
-        if(!Objects.equals(date.getEventAnnouncementDate(), ""))
+        if(!Objects.equals(date.getEventAnnouncementDate(), "") || date.getEventAnnouncementDate()!=null)
             event.setEventAnnouncementDate(LocalDateTime.parse(date.getEventAnnouncementDate()));
         else{
             event.setEventAnnouncementDate(null);
         }
         event.setEventDescription(date.getEventDescription());
-        if(!Objects.equals(date.getEventEndDate(), ""))
+        if(!Objects.equals(date.getEventEndDate(), "") || date.getEventEndDate()!=null)
             event.setEventEndDate(LocalDateTime.parse(date.getEventEndDate()));
         else{
             event.setEventEndDate(null);
         }
         event.setEventRequirements(date.getEventRequirements());
-        if(!Objects.equals(date.getEventStartDate(), ""))
+        if(!Objects.equals(date.getEventStartDate(), "") || date.getEventStartDate()!=null)
             event.setEventStartDate(LocalDateTime.parse(date.getEventStartDate()));
         else{
             event.setEventStartDate(null);
         }
-        if(Objects.equals(date.getMaxParticipants(), "")){
+        if(Objects.equals(date.getMaxParticipants(), "") || date.getMaxParticipants()==null){
             event.setMaxParticipants(0);
         }
         else{
             event.setMaxParticipants(Integer.parseInt(date.getMaxParticipants()));
         }
         event.setEventName(date.getEventName());
-        if(Objects.equals(date.getId(), "")){
+        if(Objects.equals(date.getId(), "") || date.getId()==null){
             return event;
         }
         else {
@@ -676,7 +676,7 @@ public class DTOUtils {
             return null;
         }
         Institution institution=new Institution();
-        if(Objects.equals(institutionDTO.getId(), "")){
+        if(Objects.equals(institutionDTO.getId(), "") || institutionDTO.getId()==null){
             return institution;
         }
         else {
@@ -760,25 +760,25 @@ public class DTOUtils {
             return null;
         }
         MedicalInfo medicalInfo=new MedicalInfo();
-        if(Objects.equals(medicalInfoDTO.getId(), "")){
+        if(Objects.equals(medicalInfoDTO.getId(), "") || medicalInfoDTO.getId()==null){
             return medicalInfo;
         }
         else {
             medicalInfo.setId(Integer.valueOf(medicalInfoDTO.getId()));
         }
-        if(Objects.equals(medicalInfoDTO.getBloodType(), "")){
+        if(Objects.equals(medicalInfoDTO.getBloodType(), "") || medicalInfoDTO.getBloodType()==null){
             medicalInfo.setBloodType(null);
         }
         else{
             medicalInfo.setBloodType(BloodType.valueOf(medicalInfoDTO.getBloodType()));
         }
-        if(Objects.equals(medicalInfoDTO.getEligibility(), "")){
+        if(Objects.equals(medicalInfoDTO.getEligibility(), "") || medicalInfoDTO.getEligibility()==null ){
             medicalInfo.setEligibility(false);
         }
         else{
             medicalInfo.setEligibility(Boolean.parseBoolean(medicalInfoDTO.getEligibility()));
         }
-        if(Objects.equals(medicalInfoDTO.getRh(), "")){
+        if(Objects.equals(medicalInfoDTO.getRh(), "") || medicalInfoDTO.getRh()==null){
             medicalInfo.setRh(null);
         }
         else {
@@ -848,43 +848,43 @@ public class DTOUtils {
         }
         PersonalData personalData=new PersonalData();
         personalData.setAddress(getFromDTOAddress(institution.getAddress()));
-        if(Objects.equals(institution.getId(), "")){
+        if(Objects.equals(institution.getId(), "") || institution.getId()==null){
             return personalData;
         }
         else {
             personalData.setId(Integer.valueOf(institution.getId()));
         }
-        if(Objects.equals(institution.getCnp(), "")){
+        if(Objects.equals(institution.getCnp(), "") || institution.getCnp()==null){
             personalData.setCnp("");
         }
         else{
             personalData.setCnp(institution.getCnp());
         }
-        if(Objects.equals(institution.getPhoneNumber(), "")){
+        if(Objects.equals(institution.getPhoneNumber(), "") || institution.getPhoneNumber()==null){
             personalData.setPhoneNumber("");
         }
         else{
             personalData.setPhoneNumber(institution.getPhoneNumber());
         }
-        if(Objects.equals(institution.getBirthDate(), "")){
+        if(Objects.equals(institution.getBirthDate(), "") || institution.getBirthDate()==null){
             personalData.setBirthDate(null);
         }
         else{
             personalData.setBirthDate(LocalDate.parse(institution.getBirthDate()));
         }
-        if(Objects.equals(institution.getFirstName(), "")){
+        if(Objects.equals(institution.getFirstName(), "") || institution.getFirstName()==null){
             personalData.setFirstName("");
         }
         else{
             personalData.setFirstName(institution.getFirstName());
         }
-        if(Objects.equals(institution.getLastName(), "")){
+        if(Objects.equals(institution.getLastName(), "") || institution.getLastName()==null){
             personalData.setLastName("");
         }
         else{
             personalData.setLastName(institution.getLastName());
         }
-        if(Objects.equals(institution.getSex(), "")){
+        if(Objects.equals(institution.getSex(), "") || institution.getSex()==null){
             personalData.setSex("");
         }
         else {
@@ -949,17 +949,17 @@ public class DTOUtils {
         RetrievedCoupons retrievedCoupons=new RetrievedCoupons();
         Coupon coupon=getFromDTOCoupon(institution.getCoupon());
         retrievedCoupons.setCoupon(coupon);
-        if(!Objects.equals(institution.getExpirationDate(), ""))
+        if(!Objects.equals(institution.getExpirationDate(), "") || institution.getExpirationDate()!=null)
             retrievedCoupons.setExpirationDate(LocalDateTime.parse(institution.getExpirationDate()));
         else{
             retrievedCoupons.setExpirationDate(null);
         }
-        if(!Objects.equals(institution.getReceivedDate(), ""))
+        if(!Objects.equals(institution.getReceivedDate(), "") || institution.getReceivedDate()!=null)
             retrievedCoupons.setReceivedDate(LocalDateTime.parse(institution.getReceivedDate()));
         else{
             retrievedCoupons.setReceivedDate(null);
         }
-        if(Objects.equals(institution.getId(), "")){
+        if(Objects.equals(institution.getId(), "") || institution.getId()==null){
             return retrievedCoupons;
         }
         else {
@@ -977,31 +977,31 @@ public class DTOUtils {
         student.setPersonalDate(getFromDTOPersonalData(institution.getPersonalDate()));
         student.setPersonLogInfo(getFromDTOLogInfo(institution.getPersonLogInfo()));
         student.setInstitution(getFromDTOInstitution(institution.getUniversity()));
-        if(Objects.equals(institution.getId(), "")){
+        if(Objects.equals(institution.getId(), "") || institution.getId()==null){
             return student;
         }
         else {
             student.setId(Integer.valueOf(institution.getId()));
         }
-        if(Objects.equals(institution.getYear(), "")){
+        if(Objects.equals(institution.getYear(), "") || institution.getYear()==null){
             student.setYear(0);
         }
         else{
             student.setYear(Integer.parseInt(institution.getYear()));
         }
-        if(Objects.equals(institution.getFaculty(), "")){
+        if(Objects.equals(institution.getFaculty(), "") || institution.getFaculty()==null){
             student.setFaculty("");
         }
         else{
             student.setFaculty(institution.getFaculty());
         }
-        if(Objects.equals(institution.getGroup(), "")){
+        if(Objects.equals(institution.getGroup(), "") || institution.getGroup()==null){
             student.setGroup("");
         }
         else{
             student.setGroup(institution.getGroup());
         }
-        if(Objects.equals(institution.getDepartment(), "")){
+        if(Objects.equals(institution.getDepartment(), "") || institution.getDepartment()==null){
             student.setDepartment("");
         }
         else{
